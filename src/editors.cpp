@@ -82,7 +82,6 @@ void EScene::on_create() {
 
     make_default_ubos(manager);
 
-
     make_framebuffer(pickerview, 684, 698) ;
 
     resource_lists.init(manager);
@@ -113,8 +112,6 @@ void EScene::on_create() {
             manager->project_data.startup_scene = s->name;
         }
 
-//        working_scene = manager->register_scene("Unnamed RT", create_runtime_scene());
- //       manager->project_data.startup_scene = working_scene->name;
     }
     else {
         if(!working_scene->uuids.empty() || working_scene->file_path.empty()) return;

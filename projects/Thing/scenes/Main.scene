@@ -54,8 +54,8 @@ Entities:
       Tag: Unnamed Cube
     Transform:
       Position: [0, 1, 0]
-      Size: [3, 0.5, 3]
-      Rotation: [0, 12.4, 0]
+      Size: [3.0000002, 0.5, 3.0000002]
+      Rotation: [0, 12.399994, 0]
     Model:
       Model Name: cube_tl
       Layer: 0
@@ -100,10 +100,10 @@ Entities:
     Lua Actions:
       - Path: player.lua
         Fields:
-          init_speed: [i, 3]
           jump: [i, 10]
           this: [u, 9703913328098630830]
           sensi: [f, 0.1]
+          init_speed: [i, 3]
     SptLight:
       Color: [0.5261538, 0.5261538, 0.5261538]
       Direction: [0, -1, 0]
