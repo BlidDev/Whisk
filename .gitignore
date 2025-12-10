@@ -1,41 +1,122 @@
-# Prerequisites
-*.d
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# ========================
+# C++ / CMake build files
+# ========================
+**/*.obj
+**/*.o
+**/*.a
+**/*.lib
+**/*.dll
+**/*.so*
+**/*.dylib
+**/*.exe
+**/*.pdb
+**/*.idb
+**/*.ilk
+**/*.res
+**/*.exp
+**/*.mod
+**/*.dir/
 
-# Precompiled Headers
-*.gch
-*.pch
+# ========================
+# CMake-generated files
+# ========================
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/CTestTestfile.cmake
+**/install_manifest.txt
+**/Makefile
+**/build*/
+**/_build*/
+**/out*/
+**/bin/
+**/lib/
+**/obj/
 
-# Linker files
-*.ilk
+# ========================
+# Visual Studio (2015–2022)
+# ========================
+**/.vs/
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sdf
+**/*.cache
+**/*.VC.db
+**/*.VC.opendb
+**/*.tlog
+**/*.ipch
+**/*.log
+**/*.ncb
+**/*.opensdf
+**/*.sln.docstates
 
-# Debugger Files
-*.pdb
+# VS project files (optional to ignore)
+**/*.sln
+**/*.vcxproj
+**/*.vcxproj.filters
+**/*.vcxproj.user
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# VS build output folders (recursive)
+**/x64/
+**/Debug/
+**/Release/
 
-# Fortran module files
-*.mod
-*.smod
+# ========================
+# Submodules (vendor/)
+# ========================
+vendor/*
+!vendor/.gitmodules
+!vendor/**/.git
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# ========================
+# IDE/editor metadata
+# ========================
+**/.vscode/
+**/.idea/
+**/*.code-workspace
 
-# Executables
-*.exe
-*.out
-*.app
+# ========================
+# Misc system/editor files
+# ========================
+**/*~
+**/*.swp
+**/*.swo
+**/*.tmp
+**/*.bak
+**/*.orig
+**/*.rej
+**/.DS_Store
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
 
-# debug information files
-*.dwo
+# ========================
+# Archives
+# ========================
+**/*.zip
+**/*.tar
+**/*.tar.gz
+**/*.tgz
+**/*.7z
+**/*.rar
+**/*.xz
+
+# ========================
+# Package managers
+# ========================
+**/conanbuildinfo.*
+**/conaninfo.txt
+**/conan.lock
+**/vcpkg_installed/
+
+
+*.vcxproj
+*.vcxproj.filters
+vendor/glad/*.vcxproj
+vendor/glad/*.vcxproj.filters
+
+compile_commands.json
+
+*.sh
