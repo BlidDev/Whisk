@@ -31,6 +31,5 @@ in vec3 coord;
 uniform sampler2D texture_sample;
 
 void main() {
-    float dis = length(coord - vec3(0));
-    frag_color = (vec4(1,0,1,1) * dis) + texture(texture_sample, tex_coord);
+    frag_color = texture(texture_sample, tex_coord);
 }

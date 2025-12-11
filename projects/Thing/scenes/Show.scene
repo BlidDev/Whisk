@@ -1,0 +1,309 @@
+Scene: Show
+Render Data:
+  Main Camera: 1521452924952751664
+  Ambient: [1, 1, 1]
+  Ambient Strength: 0.25
+  Clear Color: [0.29996973, 0.8565401, 0.76495254, 0]
+Entities:
+  - Entity: 853115545905826747
+    Tag:
+      Tag: huh
+    Transform:
+      Position: [-1.4077692, 0.6144738, -0.05712922]
+      Size: [0.3, 0.3, 0.1]
+      Rotation: [3.8352087e-07, 8.233201, 6.4273533e-15]
+    Model:
+      Model Name: quad_tex
+      Layer: 1
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: huh.png
+        Textured: true
+        Immune: false
+  - Entity: 17840778046544367307
+    Tag:
+      Tag: Trees
+    Transform:
+      Position: [0.9642007, 1.5000007, 0.62414974]
+      Size: [0.99999934, 2, 0.9999993]
+      Rotation: [0, -72.00003, 0]
+    Model:
+      Model Name: quad_tex
+      Layer: 1
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: tree.png
+        Textured: true
+        Immune: false
+    Children:
+      - 2274812492442075230
+      - 2247812492442075230
+      - 2274812492442073230
+      - 1247812492442075230
+  - Entity: 13390547396016064962
+    Tag:
+      Tag: Protocube4
+    Transform:
+      Position: [-0.116446055, 0.8, 1.0801976]
+      Size: [0.2, 0.2, 0.2]
+      Rotation: [0, -0, 0]
+    Model:
+      Model Name: cube_tl
+      Layer: 0
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Textured: true
+        Immune: false
+  - Entity: 13340547396016064962
+    Tag:
+      Tag: Protocube3
+    Transform:
+      Position: [-0.24079265, 0.6, 1.1967118]
+      Size: [0.2, 0.2, 0.2]
+      Rotation: [0, -0, 0]
+    Model:
+      Model Name: cube_tl
+      Layer: 0
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Textured: true
+        Immune: false
+  - Entity: 13540547396016064962
+    Tag:
+      Tag: Protocube2
+    Transform:
+      Position: [-0.011597944, 0.6, 1.0659567]
+      Size: [0.20000003, 0.2, 0.20000003]
+      Rotation: [0, 18.140724, 0]
+    Model:
+      Model Name: cube_tl
+      Layer: 0
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Textured: true
+        Immune: false
+  - Entity: 14540547396016064962
+    Tag:
+      Tag: Protocube
+    Transform:
+      Position: [-0.26374406, 0.6, 0.96393025]
+      Size: [0.2, 0.2, 0.2]
+      Rotation: [0, -0, 0]
+    Model:
+      Model Name: cube_tl
+      Layer: 0
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Textured: true
+        Immune: false
+  - Entity: 10705896094437211782
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [0, 6.3564916, 0]
+      Size: [0.3, 0.3, 0.3]
+      Rotation: [0, -0, 0]
+    DirLight:
+      Direction: [0.2, -0.2, -0.6]
+      Ambient: 0.2
+      Color: [0.9668322, 1, 0.70886075]
+      Strength: 1
+  - Entity: 899153365713169405
+    Tag:
+      Tag: Floor
+    Transform:
+      Position: [0, 0, 0]
+      Size: [50, 1, 50]
+      Rotation: [0, -0, 0]
+    Model:
+      Model Name: cube_tl
+      Layer: 0
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [0.29411766, 1, 0]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: grassish.png
+        Textured: true
+        Immune: true
+  - Entity: 1521452924952751664
+    Tag:
+      Tag: Player
+    Transform:
+      Position: [-1.5605797, 1.1786207, 2.22547]
+      Size: [0.2, 1, 0.2]
+      Rotation: [0, -0, 0]
+    Camera:
+      Target: [-0.4, 1.3, 1]
+      Up: [0, 1, 0]
+      FovY: 70
+      Projection: 0
+      Max Distance: 30
+      Framebuffer:
+        Width: 387
+        Height: 698
+      Present Shader: camerapresent.glsl
+  - Entity: 1247812492442075230
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-1.6686827, 1.5000061, 0.26292858]
+      Size: [0.99999225, 2, 0.99999017]
+      Rotation: [3.6685682e-07, 19.572851, -1.4885935e-06]
+    Model:
+      Model Name: quad_tex
+      Layer: 2
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [0.5019608, 0.827451, 0]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: tree.png
+        Textured: true
+        Immune: false
+    Parent:
+      Parent: 17840778046544367307
+  - Entity: 2274812492442073230
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [0.5606657, 1.4999979, 1.6149204]
+      Size: [0.9999944, 2, 0.99999267]
+      Rotation: [6.72555e-07, -59.07276, -2.1884232e-06]
+    Model:
+      Model Name: quad_tex
+      Layer: 2
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: tree.png
+        Textured: true
+        Immune: false
+    Parent:
+      Parent: 17840778046544367307
+  - Entity: 2247812492442075230
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.2560795, 1.5, 2.4189932]
+      Size: [0.9999865, 2, 0.9999839]
+      Rotation: [2.0165185e-06, -89.20623, -2.0183672e-06]
+    Model:
+      Model Name: quad_tex
+      Layer: 2
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 20.2
+        Texture: tree.png
+        Textured: true
+        Immune: false
+    Parent:
+      Parent: 17840778046544367307
+  - Entity: 2274812492442075230
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.049579434, 1.4999977, -2.0954758e-08]
+      Size: [0.9999939, 2, 0.99999243]
+      Rotation: [4.0160776e-07, -30.606215, -1.8159624e-06]
+    Model:
+      Model Name: quad_tex
+      Layer: 1
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [0.5024836, 0.8270042, 0]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: tree.png
+        Textured: true
+        Immune: false
+    Parent:
+      Parent: 17840778046544367307
+  - Entity: 15441921430542165859
+    Tag:
+      Tag: Sign
+    Transform:
+      Position: [-0.5616613, 0.7474741, 1.0648665]
+      Size: [0.4, 0.4, 0.4]
+      Rotation: [1.5369052e-06, -43.176422, -2.1469393e-06]
+    Model:
+      Model Name: quad_tex
+      Layer: 4
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [0.43037975, 0.43037975, 0.43037975]
+        Diffuse: [0.8565401, 0.8565401, 0.8565401]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: sign.png
+        Textured: true
+        Immune: false
+  - Entity: 2385443487679320494
+    Tag:
+      Tag: wall
+    Transform:
+      Position: [-0.9559516, 1.0539678, -1.3668982]
+      Size: [1.6000009, 0.99999136, 0.99997574]
+      Rotation: [89.999954, 47.964985, -0.00015300952]
+    Model:
+      Model Name: cube_tl
+      Layer: 0
+      Material:
+        Shader: lightingt.glsl
+        Filled: false
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: Bricks.png
+        Textured: true
+        Immune: false

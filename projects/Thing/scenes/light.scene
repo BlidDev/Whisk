@@ -29,9 +29,9 @@ Entities:
     Lua Actions:
       - Path: player.lua
         Fields:
+          this: [u, 13498557765369267930]
           init_speed: [i, 3]
           jump: [i, 10]
-          this: [u, 13498557765369267930]
           sensi: [f, 0.1]
     DirLight:
       Direction: [-0.2, -1, 0.4]
@@ -52,7 +52,7 @@ Entities:
     Transform:
       Position: [0, 0, 0]
       Size: [11.5, 0.5, 7.7]
-      Rotation: [0, 0, 0]
+      Rotation: [0, -0, 0]
     Model:
       Model Name: cube
       Layer: 0

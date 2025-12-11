@@ -1,6 +1,6 @@
 Project Name: Thing
 Root Path: projects/Thing
-Startup Scene: Main
+Startup Scene: Show
 Paths:
   Scenes:
     - scenes

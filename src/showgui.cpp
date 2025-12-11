@@ -705,7 +705,8 @@ void EScene::render_resources() {
             };
 
             ImGui::SameLine(0, 15.0f);
-            if (ImGui::Button("Set Current")) {
+            std::string title = std::format("Set Current##SceneSettings{}",scene);
+            if (ImGui::Button(title.c_str())) {
                 working_scene = manager->get_scene(scene.c_str());
                 show_scene_settings.off();
                 selected = 0;

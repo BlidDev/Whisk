@@ -97,6 +97,9 @@ void EScene::on_create() {
 
     make_viewer();
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     if (!working_scene) {
         if (manager->num_of_scenes() <= 2) {creating_scene = true; return;}
 
