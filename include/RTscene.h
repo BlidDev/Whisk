@@ -20,4 +20,6 @@ public:
 private:
     bool close;
     Entity player;
+    Mesh display_quad;
+    size_t physics_tickrate;
 };

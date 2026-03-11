@@ -188,7 +188,7 @@ void EScene::render_entities(bool *has_selected) {
                 auto e = working_scene->create_entity();
                 e.add_component<TagComp>("Unnamed Cube");
                 e.add_component<TransformComp>();
-                e.add_component<ModelComp>(working_scene->get_model("cube"), 
+                e.add_component<ModelComp>(working_scene->get_mesh("cube"), 
                                            MaterialBuilder()
                                                            .set_shader(working_scene->get_shader("basic.glsl"))
                                                            .set_color(glm::vec3(1.0f)));
@@ -275,7 +275,7 @@ void EScene::render_editorview(float dt) {
         rescale_framebuffer(pickerview, size.x, size.y);
     }
 
-    draw_to_camera(manager->render_data,{size.x, size.y}, viewer, working_scene->registry, &working_scene->s_render_data,true, view_camera.framebuffer);
+    draw_to_camera(manager->render_data,{size.x, size.y}, viewer, working_scene->registry, &working_scene->s_render_data,true);
     render_hitboxes();
     render_pickerview();
     
@@ -408,16 +408,16 @@ void EScene::render_pickerview() {
         glm::mat4 model = t.get_model();
         set_shader_m4(picker_shader, "model", model);
 
-        glBindVertexArray(m.model.VAO);
-        if (m.model.nindices != 0) {
-            glDrawElements(GL_TRIANGLES, m.model.nindices, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(m.mesh.VAO);
+        if (m.mesh.nindices != 0) {
+            glDrawElements(GL_TRIANGLES, m.mesh.nindices, GL_UNSIGNED_INT, 0);
             continue;
         }
-        glDrawArrays(GL_TRIANGLES, 0, m.model.nvertices);
+        glDrawArrays(GL_TRIANGLES, 0, m.mesh.nvertices);
     }
 
     auto hitboxes = working_scene->registry.view<TransformComp>(entt::exclude<ModelComp>);
-    const Model& cube = get_model("cube");
+    const Mesh& cube = get_mesh("cube");
     for (const auto& [e, t] : hitboxes.each()) {
         int r = ((uint32_t)e & 0x000000FF) >>  0;
         int g = ((uint32_t)e & 0x0000FF00) >>  8;
@@ -443,7 +443,7 @@ void EScene::render_hitboxes() {
     glEnable(GL_DEPTH_TEST);
 
     auto hitboxes = working_scene->registry.view<TransformComp>(entt::exclude<ModelComp>);
-    const Model& cube = get_model("cube");
+    const Mesh& cube = get_mesh("cube");
     Shader& shader = get_shader("basic.glsl");
 
     entt::entity selected_entt = (selected) ? working_scene->uuid_to_entt(selected) : entt::null;
@@ -735,7 +735,7 @@ void EScene::render_resources() {
         }
 
         if (ImGui::TreeNode("Models")) {
-            for (const auto& model : lists.models) {
+            for (const auto& model : lists.meshes) {
                 ImGui::BulletText("%s", model.c_str());
             }
             ImGui::TreePop();

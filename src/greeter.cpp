@@ -115,7 +115,7 @@ void Greeter::create_project() {
                tmp_data.scene_paths.push_back("scenes");
                tmp_data.shader_paths.push_back("shaders");
                tmp_data.texture_paths.push_back("textures");
-               tmp_data.model_paths.push_back("models");
+               tmp_data.mesh_paths.push_back("meshes");
                tmp_data.script_paths.push_back("scripts");
 
                std::string prj_path = std::format("{}/{}.prj", current.string(), tmp_data.name).c_str();

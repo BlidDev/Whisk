@@ -7,14 +7,14 @@ void initialize_imgui(SceneManager* manager);
 
 
 
-void sameline_text(const char* title, std::string* v);
-void sameline_checkbox(const char* title, bool* v);
-void sameline_color(const char* title, glm::vec3& v);
-void sameline_color(const char* title, glm::vec4& v);
-void sameline_v3(const char* title, glm::vec3& v, float min = 0.F, float max = 0.F, float speed = 0.1f);
-void sameline_v2(const char* title, glm::vec2& v, float min = 0.F, float max = 0.F, float speed = 0.1f);
-void sameline_float(const char* title, float* v, float min = 0.F, float max = 0.F, float speed = 0.1f);
-void sameline_int(const char* title, int* v, int min = 0.F, int max = 0.F, int speed = 1);
+bool sameline_text(const char* title, std::string* v);
+bool sameline_checkbox(const char* title, bool* v);
+bool sameline_color(const char* title, glm::vec3& v);
+bool sameline_color(const char* title, glm::vec4& v);
+bool sameline_v3(const char* title, glm::vec3& v, float min = 0.F, float max = 0.F, float speed = 0.1f);
+bool sameline_v2(const char* title, glm::vec2& v, float min = 0.F, float max = 0.F, float speed = 0.1f);
+bool sameline_float(const char* title, float* v, float min = 0.F, float max = 0.F, float speed = 0.1f);
+bool sameline_int(const char* title, int* v, int min = 0.F, int max = 0.F, int speed = 1);
 
 template <typename T>
 void render_combo(const char* label, T* subject, const char** index, size_t arr_size) {

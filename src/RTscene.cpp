@@ -2,6 +2,8 @@
 
 RTScene::RTScene() : Scene("RT") { 
     close = false; 
+    physics_tickrate = 50;
+    display_quad = {};
 }
 
 
@@ -10,27 +12,30 @@ void RTScene::on_create() {
         add_from_file(file_path.c_str());
     player = uuid_to_entity(main_camera);
     lua_action_init(this);
+    actions_init(this);
+    display_quad = get_mesh("DefaultDisplayQuad");
 }
 
 void RTScene::on_update(float dt) {
     close = is_key_pressed(GLFW_KEY_ESCAPE);
-    actions(this,dt);
+    actions_update(this,dt);
     lua_action_update(this, dt);
-    physics(registry,dt);
-    if (aabb_check(*this, dt)) return;
+
+    if (fixed_physics(this, physics_tickrate, dt)) return;
+
     glm::vec2 view = manager->main_window.size();
 
     rescale_camera_to_window(player.get_component<CameraComp>(), manager->main_window);
     draw_to_camera(manager->render_data, view, player, registry, &s_render_data);
-    present_camera(player, get_model("quad_tex"));
+    present_camera(player, display_quad);
     glfwSwapBuffers(manager->main_window);
     glfwPollEvents();
 
 }
 
 void RTScene::on_end() {
-
   lua_action_end(this);
+  actions_end(this);
   close = false;
 }
 

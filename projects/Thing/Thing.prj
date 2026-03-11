@@ -1,6 +1,6 @@
 Project Name: Thing
 Root Path: projects/Thing
-Startup Scene: Show
+Startup Scene: Main
 Paths:
   Scenes:
     - scenes
@@ -8,8 +8,8 @@ Paths:
     - shaders
   Textures:
     - textures
-  Models:
-    - models
+  Meshes:
+    - meshes
   Scripts:
     - scripts
 Layers:

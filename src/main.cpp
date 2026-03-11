@@ -8,7 +8,9 @@
 int engine::on_start(engine::SceneManager* manager) {
     uint32_t screen_w = 1280, screen_h = 720;
 
-    manager->main_window = Window("Radiator", screen_w, screen_h);
+    engine::LuaManager::init("res/scripts/util.lua");
+
+    manager->main_window = Window("Whisk", screen_w, screen_h);
     manager->render_data.screen_w = screen_w;
     manager->render_data.screen_h = screen_h;
     engine::set_input_window(manager->main_window);

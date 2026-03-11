@@ -18,6 +18,7 @@ void run_rt_scene(EScene *editor) {
 
         rt_manager.main_window = emanager->main_window;
         rt_manager.render_data = emanager->render_data;
+        rt_manager.register_mesh("DefaultDisplayQuad", editor->get_mesh("DefaultDisplayQuad"));
         ubos_shaders_bind(rt_manager.render_data, rt_manager.shader_lib);
 
     }

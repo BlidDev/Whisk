@@ -8,7 +8,7 @@ ResourceLists::ResourceLists() {
     scenes = {};
     shaders = {};
     textures = {};
-    models = {};
+    meshes = {};
     scripts = {};
 }
 
@@ -25,8 +25,8 @@ void ResourceLists::init(SceneManager* manager) {
     textures.reserve(manager->texture_lib.size());  
         for (const auto& [k,_] : manager->texture_lib) {textures.push_back(k);};
 
-    models.reserve(manager->model_lib.size());  
-        for (const auto& [k,_] : manager->model_lib) {models.push_back(k);};
+    meshes.reserve(manager->mesh_lib.size());  
+        for (const auto& [k,_] : manager->mesh_lib) {meshes.push_back(k);};
 
     scripts.reserve(manager->script_lib.size());  
         for (const auto& [k,_] : manager->script_lib) {scripts.push_back(k);};
@@ -67,7 +67,7 @@ void EScene::make_viewer() {
     viewer = create_entity();
     viewer.add_component<EditorViewer>();
     viewer.add_component<TransformComp>(TransformBuilder().position(glm::vec3{0.0f, 2.0f, 4.0f}));
-    viewer.add_component<CameraComp>(CameraBuilder().target({0.0f, 1.0f, -5.0f})
+    viewer.add_component<CameraComp>(CameraBuilder().pitch(0.0f).yaw(0.0f)
                                                     .framebuffer_size(size.x, size.y)
                                                     .present_shader(get_shader("camerapresent.glsl"))
                                                     .build());

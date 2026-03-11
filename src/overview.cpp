@@ -2,10 +2,6 @@
 #include "editors.h"
 #include "helper.h"
 #include "imgui.h"
-#include "tinyfiledialogs.h"
-
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 #include "misc/cpp/imgui_stdlib.h"
 #include <array>
 #include <functional>
@@ -42,7 +38,7 @@ static const std::unordered_map<std::string, CompMakerFn> StrCompFactory = {
     {
      "CameraComp", [](Entity&e, Scene* scene){ 
          ImVec2 size = ImGui::GetWindowSize();
-         e.add_component<CameraComp>(CameraBuilder().up({0,1,0}).target({0,0,1}).fovy(70)
+         e.add_component<CameraComp>(CameraBuilder().up({0,1,0}).fovy(70)
                                                     .framebuffer_size(size.x, size.y)
                                                     .present_shader(scene->get_shader("camerapresent.glsl"))
                                                     .build()); 
@@ -53,7 +49,7 @@ static const std::unordered_map<std::string, CompMakerFn> StrCompFactory = {
 
     {
      "ModelComp", [](Entity& e, Scene* scene){ 
-            e.add_component<ModelComp>(scene->get_model("cube"), MaterialBuilder().set_shader(scene->get_shader("basic.glsl"))
+            e.add_component<ModelComp>(scene->get_mesh("cube"), MaterialBuilder().set_shader(scene->get_shader("basic.glsl"))
                                                                                   .set_color(glm::vec3(1.0f))); 
         }
 
@@ -283,8 +279,7 @@ void render_physicsbody(PhysicsBodyComp &p, Entity &e) {
     }
 
     if (ImGui::TreeNode("Advanced physics options")) {
-        sameline_v3("Acceleration", p.acceleration);
-        sameline_v3("Velocity    ", p.velocity);
+        sameline_v3("Velocity ", p.velocity);
         ImGui::TreePop();
     }
     ImGui::GetStyle().ItemSpacing = ImVec2(0, 10.0f);
@@ -299,12 +294,17 @@ const char* camera_proj[] = {
 void render_camera(CameraComp& c) {
 
     sameline_float("FOV", &c.fovy);
+    float pitch = c.pitch(), yaw = c.yaw();
+    if (sameline_float("Pitch", &pitch, -90.0f, 90.0f))
+        c.set_pitch(pitch);
+
+    if (sameline_float("Yaw", &yaw, -90.0f, 90.0f))
+        c.set_yaw(yaw);
 
 
     render_combo("Camera Projection", &c.projection_mode, camera_proj, IM_ARRAYSIZE(camera_proj));
 
     if (ImGui::TreeNode("Advanced camera options")) {
-           sameline_v3("Target", c.target);
            sameline_v3("Up    ", c.up);
         sameline_float("Max Distance", &c.max_distance);
         ImGui::TreePop();
@@ -318,26 +318,10 @@ const char* num_to_str[MAX_RENDER_LAYERS] = {"0", "1", "2", "3", "4", "5", "6", 
 void render_model(ModelComp& m, SceneManager* manager) {
     render_combo("Render Layer", &m.layer, num_to_str, MAX_RENDER_LAYERS);
 
+    ImGui::Checkbox("Immune To Render Distance", &m.is_immune);
     render_lib_select("Shader", m.material.shader, m.material.shader.path, manager->shader_lib);
-    render_lib_select("Model", m.model, m.model.name, manager->model_lib);
+    render_lib_select("Mesh", m.mesh, m.mesh.name, manager->mesh_lib);
 
-    bool is_textured = (m.material.attributes & MODEL_TEXTURED) == MODEL_TEXTURED;
-    if(is_textured) {
-        render_lib_select("Texture", m.material.texture, m.material.texture.path, manager->texture_lib, 
-                [&m, &manager, &is_textured](std::string& chosen){
-                if (chosen == "UNKNOWN") {
-                    m.material.texture = Texture();
-                    m.material.attributes &= ~MODEL_TEXTURED;
-                    m.material.attributes |= MODEL_FILLED;
-                    is_textured = false;
-                    return;
-                }
-
-                m.material.texture = manager->texture_lib[chosen];
-                m.material.attributes |= MODEL_TEXTURED;
-                m.material.attributes &= ~MODEL_FILLED;
-                }, {"UNKNOWN"});
-    }
 
 
     if (ImGui::TreeNode("Material Args")) {
@@ -346,27 +330,19 @@ void render_model(ModelComp& m, SceneManager* manager) {
         sameline_color("Specular", m.material.specular);
         sameline_float("Shininess", &m.material.shininess);
 
-        bool is_filled = (m.material.attributes & MODEL_FILLED) == MODEL_FILLED;
-        bool is_immune = (m.material.attributes & MODEL_IMMUNE) == MODEL_IMMUNE;
+        bool& is_textured = m.material.is_textured;
 
-        if (is_filled && m.material.texture.path != "UNKNOWN") {
-            m.material.texture = Texture();
-            m.material.attributes &= ~MODEL_TEXTURED;
-            m.material.attributes |= MODEL_FILLED;
-            is_textured = false;
+        ImGui::Checkbox("Textured", &is_textured);
+
+        if(is_textured) {
+            if (m.material.texture.texture == 0) {
+                DU_ASSERT(manager->texture_lib.empty(), "Material is set to be textured but there are no registered textures");
+                m.material.texture = manager->texture_lib.begin()->second;
+            }
+            render_lib_select("Texture", m.material.texture, m.material.texture.path, manager->texture_lib);
         }
 
-        ImGui::Text("Current: %s ", (is_filled) ? "Filled" : "Textured");
-        ImGui::SameLine(0, 10.0f);
-        if (is_textured && !is_filled)
-            {if(ImGui::Button("Set Filled")){ is_filled = true; is_textured = false;}}
-        if (is_filled && !is_textured)
-        {if(ImGui::Button("Set Textured")){ is_textured = true; is_filled = false;}}
-        ImGui::Checkbox("Immune", &is_immune);
 
-        m.material.attributes = ((is_filled)   ? MODEL_FILLED   : 0) |
-                                ((is_textured) ? MODEL_TEXTURED : 0) |
-                                ((is_immune)   ? MODEL_IMMUNE   : 0);
         ImGui::TreePop();
     }
 
@@ -466,7 +442,6 @@ void render_children(ChildrenComp& c, Scene* scene, Entity& parent) {
 
         std::string name = make_entity_name(current);
         auto dis_width = ImGui::CalcTextSize("Disown").x;
-        auto text_width = ImGui::CalcTextSize(name.c_str()).x;
 
 
         ImGui::Text("* %s", name.c_str()); ImGui::SameLine(); ImGui::SetCursorPosX((width - dis_width) /2); 

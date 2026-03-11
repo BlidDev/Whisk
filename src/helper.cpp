@@ -39,53 +39,53 @@ void initialize_imgui(SceneManager* manager) {
 
 
 
-void sameline_text(const char* title, std::string* v) {
+bool sameline_text(const char* title, std::string* v) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::InputText(std::format("##{}", title).c_str(), v);
+    return ImGui::InputText(std::format("##{}", title).c_str(), v);
 }
 
-void sameline_checkbox(const char* title, bool* v) {
+bool sameline_checkbox(const char* title, bool* v) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::Checkbox(std::format("##{}", title).c_str(), v);
+    return ImGui::Checkbox(std::format("##{}", title).c_str(), v);
 }
 
-void sameline_color(const char* title, glm::vec4& v) {
+bool sameline_color(const char* title, glm::vec4& v) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::ColorEdit4(std::format("##{}", title).c_str(), glm::value_ptr(v));
+    return ImGui::ColorEdit4(std::format("##{}", title).c_str(), glm::value_ptr(v));
 }
 
-void sameline_color(const char* title, glm::vec3& v) {
+bool sameline_color(const char* title, glm::vec3& v) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::ColorEdit3(std::format("##{}", title).c_str(), glm::value_ptr(v));
+    return ImGui::ColorEdit3(std::format("##{}", title).c_str(), glm::value_ptr(v));
 }
 
-void sameline_v3(const char* title, glm::vec3& v, float min, float max, float speed) {
+bool sameline_v3(const char* title, glm::vec3& v, float min, float max, float speed) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::DragFloat3(std::format("##{}", title).c_str(), glm::value_ptr(v), speed, min, max);
+    return ImGui::DragFloat3(std::format("##{}", title).c_str(), glm::value_ptr(v), speed, min, max);
 }
 
-void sameline_v2(const char* title, glm::vec2& v, float min, float max, float speed) {
+bool sameline_v2(const char* title, glm::vec2& v, float min, float max, float speed) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::DragFloat2(std::format("##{}", title).c_str(), glm::value_ptr(v), speed, min, max);
+    return ImGui::DragFloat2(std::format("##{}", title).c_str(), glm::value_ptr(v), speed, min, max);
 }
 
-void sameline_float(const char* title, float* v, float min, float max, float speed) {
+bool sameline_float(const char* title, float* v, float min, float max, float speed) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::DragFloat(std::format("##{}", title).c_str(), v, speed,min, max);
+    return ImGui::DragFloat(std::format("##{}", title).c_str(), v, speed,min, max);
 }
 
 
-void sameline_int(const char* title, int* v, int min, int max, int speed) {
+bool sameline_int(const char* title, int* v, int min, int max, int speed) {
     ImGui::Text("%s", title);
     ImGui::SameLine(0.0f, 10.0f);
-    ImGui::DragInt(std::format("##{}", title).c_str(), v, speed,min, max);
+    return ImGui::DragInt(std::format("##{}", title).c_str(), v, speed,min, max);
 }
 
 
