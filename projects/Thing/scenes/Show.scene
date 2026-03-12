@@ -11,25 +11,25 @@ Entities:
     Transform:
       Position: [-0.9559516, 1.0539678, -1.3668982]
       Size: [1.6000009, 0.99999136, 0.99997574]
-      Rotation: [89.999954, 47.964985, -0.00015300952]
+      Rotation: [0, 47.964985, -0.00015300952]
     Model:
       Mesh Name: cube
       Layer: 0
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
         Texture: Bricks.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 15441921430542165859
     Tag:
       Tag: Sign
     Transform:
-      Position: [-0.5616613, 0.7474741, 1.0648665]
+      Position: [-0.5616613, 0.7, 1.0648665]
       Size: [0.4, 0.4, 0.4]
       Rotation: [1.5369052e-06, -43.176422, -2.1469393e-06]
     Model:
@@ -38,13 +38,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [0.43037975, 0.43037975, 0.43037975]
         Diffuse: [0.8565401, 0.8565401, 0.8565401]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: sign.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 2274812492442075230
     Tag:
       Tag: Tree
@@ -58,13 +58,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [0.5024836, 0.8270042, 0]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: tree.png
         Is Textured: true
+        Texture Repeats: [1, 1]
     Parent:
       Parent: 17840778046544367307
   - Entity: 2247812492442075230
@@ -80,13 +80,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 20.2
         Texture: tree.png
         Is Textured: true
+        Texture Repeats: [1, 1]
     Parent:
       Parent: 17840778046544367307
   - Entity: 2274812492442073230
@@ -102,13 +102,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: tree.png
         Is Textured: true
+        Texture Repeats: [1, 1]
     Parent:
       Parent: 17840778046544367307
   - Entity: 1247812492442075230
@@ -124,28 +124,28 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [0.5019608, 0.827451, 0]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: tree.png
         Is Textured: true
+        Texture Repeats: [1, 1]
     Parent:
       Parent: 17840778046544367307
   - Entity: 1521452924952751664
     Tag:
       Tag: Player
     Transform:
-      Position: [-1.5605797, 1.1786207, 2.22547]
+      Position: [-1.5605797, 1, 2.22547]
       Size: [0.2, 1, 0.2]
       Rotation: [0, -0, 0]
     Camera:
       Pitch: 0
-      Yaw: 0
+      Yaw: 310
       Up: [0, 1, 0]
       FovY: 70
-      Projection: 0
+      Projection: Perspective
       Max Distance: 30
       Framebuffer:
         Width: 387
@@ -164,13 +164,13 @@ Entities:
       Immune: true
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [0.29411766, 1, 0]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: grassish.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 10705896094437211782
     Tag:
       Tag: Light
@@ -182,7 +182,7 @@ Entities:
       Direction: [0.2, -0.2, -0.6]
       Ambient: 0.2
       Color: [0.9668322, 1, 0.70886075]
-      Strength: 1
+      Strength: 0.8
   - Entity: 14540547396016064962
     Tag:
       Tag: Protocube
@@ -196,13 +196,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
         Texture: proto.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 13540547396016064962
     Tag:
       Tag: Protocube2
@@ -216,13 +216,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
         Texture: proto.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 13340547396016064962
     Tag:
       Tag: Protocube3
@@ -236,13 +236,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
         Texture: proto.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 13390547396016064962
     Tag:
       Tag: Protocube4
@@ -256,13 +256,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
         Texture: proto.png
         Is Textured: true
+        Texture Repeats: [1, 1]
   - Entity: 17840778046544367307
     Tag:
       Tag: Trees
@@ -276,13 +276,13 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: tree.png
         Is Textured: true
+        Texture Repeats: [1, 1]
     Children:
       - 2274812492442075230
       - 2247812492442075230
@@ -297,14 +297,14 @@ Entities:
       Rotation: [3.8352087e-07, 8.233201, 6.4273533e-15]
     Model:
       Mesh Name: quad_tex
-      Immune: false
       Layer: 1
+      Immune: false
       Material:
         Shader: lighting.glsl
-        Filled: false
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
-        Is Texture: huh.png
-        Textured: true
+        Texture: huh.png
+        Is Textured: true
+        Texture Repeats: [1, 1]

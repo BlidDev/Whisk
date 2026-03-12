@@ -130,6 +130,7 @@ private:
     ImGuizmo::MODE guizmo_mode;
     bool gizmo_snap;
     bool gizmo_fine;
+    bool gizmo_solo;
 };
 
 void open_working_file(SceneManager* manager, RTScene* working_scene, EScene* editor);

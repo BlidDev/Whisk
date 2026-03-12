@@ -1,4 +1,5 @@
 #include "components/modelcomp.h"
+#include "glm/fwd.hpp"
 #include "helper.h"
 #include "imgui_internal.h"
 
@@ -218,14 +219,13 @@ void EScene::render_entities(bool *has_selected) {
         Entity tmp = {working_scene, entity};
         if (tmp.is_child())
             continue;
-        ImGui::PushID(tmp.uuid());
         render_entity(tmp, has_selected, true);
-        ImGui::PopID();
     }
     ImGui::End();
 }
 
 void EScene::render_entity(Entity current, bool *has_selected, bool root) {
+    ImGui::PushID(current.uuid());
     ImGuiTreeNodeFlags flags = 0;
     if (root) flags |= ImGuiTreeNodeFlags_DefaultOpen;
 
@@ -254,6 +254,7 @@ void EScene::render_entity(Entity current, bool *has_selected, bool root) {
 
         ImGui::TreePop();
     }
+    ImGui::PopID();
 }
 
 
@@ -322,13 +323,13 @@ void EScene::render_editorview(float dt) {
 
             bool radio = false;
 
-            if (ImGui::RadioButton( ICON_MD_CONTROL_CAMERA "", guizmo_operation == ImGuizmo::OPERATION::TRANSLATE) || is_key_clicked(GLFW_KEY_T))
+            if (ImGui::RadioButton( ICON_MD_CONTROL_CAMERA "", guizmo_operation == ImGuizmo::OPERATION::TRANSLATE) || is_key_clicked(GLFW_KEY_Q))
             {guizmo_operation = ImGuizmo::OPERATION::TRANSLATE; radio = true; }
             ImGui::SameLine(0, 3.0f);
-            if (ImGui::RadioButton( ICON_MD_OPEN_IN_NEW "", guizmo_operation == ImGuizmo::OPERATION::SCALE)|| is_key_clicked(GLFW_KEY_S))
+            if (ImGui::RadioButton( ICON_MD_OPEN_IN_NEW "", guizmo_operation == ImGuizmo::OPERATION::SCALE)|| is_key_clicked(GLFW_KEY_W))
             {guizmo_operation = ImGuizmo::OPERATION::SCALE; radio = true; }
             ImGui::SameLine(0, 3.0f);
-            if (ImGui::RadioButton( ICON_MD_LOOP "", guizmo_operation == ImGuizmo::OPERATION::ROTATE)|| is_key_clicked(GLFW_KEY_R))
+            if (ImGui::RadioButton( ICON_MD_LOOP "", guizmo_operation == ImGuizmo::OPERATION::ROTATE)|| is_key_clicked(GLFW_KEY_E))
             {guizmo_operation = ImGuizmo::OPERATION::ROTATE; radio = true; }
 
             ImGui::SameLine(0.0, 7.5f);
@@ -344,6 +345,7 @@ void EScene::render_editorview(float dt) {
 
             gizmo_snap = is_key_pressed(GLFW_KEY_LEFT_CONTROL);
             gizmo_fine = is_key_pressed(GLFW_KEY_LEFT_SHIFT);
+            gizmo_solo = is_key_pressed(GLFW_KEY_LEFT_ALT);
 
             ImGui::PopStyleVar(1);
             ImGui::PopStyleColor(2);
@@ -362,6 +364,7 @@ void EScene::render_editorview(float dt) {
 
             gizmo_fine = is_key_pressed(GLFW_KEY_LEFT_SHIFT);
             gizmo_snap = is_key_pressed(GLFW_KEY_LEFT_CONTROL);
+            gizmo_solo = is_key_pressed(GLFW_KEY_LEFT_ALT);
         }break;
 
 
@@ -491,22 +494,33 @@ entt::entity EScene::entity_from_view(ImVec2 pos, ImVec2 size) {
     if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0)
         return entt::null;
     unsigned char pixel[4]; 
-                            
-    glGetTextureSubImage(
-        pickerview.texture,
-        0,        
-        pos.x, pos.y, 0,  
-        1, 1, 1, 
-        GL_RGBA,
-        GL_UNSIGNED_BYTE,
-        sizeof(pixel),
-        pixel
-    );
+
+    if (glGetTextureSubImage) {
+        glGetTextureSubImage(
+                pickerview.texture,
+                0,        
+                pos.x, pos.y, 0,  
+                1, 1, 1, 
+                GL_RGBA,
+                GL_UNSIGNED_BYTE,
+                sizeof(unsigned char) * 4,
+                pixel
+                );
+    }
+    else {
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, pickerview.handler);
+        glm::ivec2 mouse_pos = {pos.x, pos.y};
+        glReadBuffer(GL_COLOR_ATTACHMENT0);
+        glReadPixels(mouse_pos.x, mouse_pos.y, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, pixel);
+
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+    }
 
     int picked = 
         pixel[0] + 
         pixel[1] * 256 +
         pixel[2] * 256*256;
+
     if (picked == 0x00FFFFFF) {
         return entt::null;
     }
@@ -560,6 +574,7 @@ void EScene::render_prj_settings() {
 
     if (ImGui::TreeNodeEx("Globals", ImGuiTreeNodeFlags_DefaultOpen)) {
         render_str_select("Startup Scene: ", data.startup_scene, resource_lists.scenes);
+        ImGui::Checkbox("Flip Textures On Load", &data.flip_textures_on_load);
         ImGui::TreePop();
     }
 
@@ -794,11 +809,12 @@ void EScene::render_gizmo(ImVec2 pos, ImVec2 size) {
 
     float scale_snap[] = {0.5f, 0.5f, 0.5f};
     float rotate_snap = 36.0f;
+    float fine_factor = 6.0f;
 
     if(gizmo_fine) {
-        rotate_snap /= 4.0f;
+        rotate_snap /= fine_factor;
         for (int i = 0; i < 3; i++)
-            scale_snap[i] /= 4.0f;
+            scale_snap[i] /= fine_factor;
     }
 
     float* snap_ptr = (guizmo_operation == ImGuizmo::OPERATION::ROTATE) ? &rotate_snap : scale_snap;
@@ -809,11 +825,31 @@ void EScene::render_gizmo(ImVec2 pos, ImVec2 size) {
     io.KeyCtrl = true;     
 
 
-    ImGuizmo::Manipulate(glm::value_ptr(view), glm::value_ptr(projection), guizmo_operation, guizmo_mode,glm::value_ptr(matrix), glm::value_ptr(delta), (gizmo_snap) ? snap_ptr : nullptr);
-
-    if (ImGuizmo::IsUsing())
-        selected_trans.apply_mat(delta);
+    ImGuizmo::Manipulate(glm::value_ptr(view),
+                         glm::value_ptr(projection),
+                         guizmo_operation,
+                         guizmo_mode,
+                         glm::value_ptr(matrix),
+                         glm::value_ptr(delta),
+                         (gizmo_snap || gizmo_fine) ? snap_ptr : nullptr);
 
     io.KeyCtrl = ctrl_backup;
+
+    if (ImGuizmo::IsUsing()) {
+        selected_trans.set_model(matrix);
+        if (gizmo_solo) return;
+
+        if (guizmo_operation != ImGuizmo::OPERATION::SCALE) {
+            apply_translation_on_children(working_scene, e_selected, delta); return;
+        }
+
+        glm::mat4 scale_free = delta;
+
+        for (int i = 0; i < 3; i++)
+            scale_free[i] = glm::vec4(glm::normalize(glm::vec3(delta[i])), 0.0f);
+
+        apply_translation_on_children(working_scene, e_selected, scale_free); return;
+    }
+
 }
 

@@ -7,6 +7,7 @@ local spt
 
 local captured = true -- Mouse cursor captured flag
 local picked = false  -- Is cube picked up flag
+local flashlight = false;
 
 Other = nil
 Pickup_distance = nil
@@ -29,9 +30,11 @@ function on_update(dt)
     local f = Is_key(util.KeyboardKey.W) - Is_key(util.KeyboardKey.S)
     local r = Is_key(util.KeyboardKey.D) - Is_key(util.KeyboardKey.A)
 
-    if is_key_clicked(util.KeyboardKey.F) then
+    if is_key_clicked(util.KeyboardKey.F) and Other ~= nil then
         Try_pick_up()
     end
+
+    if is_key_clicked(util.KeyboardKey.R) then flashlight = not flashlight end
 
     -- jump when grounded
     if is_key_down(util.KeyboardKey.SPACE) and phys.move_delta.y == 0.0 then
@@ -61,6 +64,7 @@ function on_update(dt)
 
     if spt ~= nil then
         spt.direction = last_dir
+        if flashlight then spt.color = vec3.new(0.97, 0.96, 0.51) else spt.color = vec3.new(0.0) end
     end
 
     local move = (forward * f) + (right * r) 

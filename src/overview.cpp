@@ -238,6 +238,8 @@ void try_transform(Entity& e){
 
 void render_physicsbody(PhysicsBodyComp &p, Entity &e) {
     sameline_float("Gravity", &p.gravity);
+    sameline_float("Mass", &p.mass, 0.0f);
+    sameline_float("Slipperiness", &p.slipperiness, 0.0f, 1.0f);
     ImGui::Checkbox("Is Solid", &p.is_solid);
     ImGui::Checkbox("Is Static", &p.is_static);
 
@@ -340,6 +342,7 @@ void render_model(ModelComp& m, SceneManager* manager) {
                 m.material.texture = manager->texture_lib.begin()->second;
             }
             render_lib_select("Texture", m.material.texture, m.material.texture.path, manager->texture_lib);
+            sameline_v2("TexRep", m.material.tex_repeat, 0.0f, 0.F, 1.0f);
         }
 
 

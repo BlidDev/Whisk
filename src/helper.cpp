@@ -148,3 +148,30 @@ float get_centered_pos(const char* text) {
 
     return ((width - text_width) / 2.0f);
 }
+
+
+void apply_translation_on_children(Scene* parent_scene, Entity current, const glm::vec3& delta) {
+    if (!current.is_parent()) return;
+
+    for (const auto& uuid : current.get_children()) {
+        Entity child = parent_scene->uuid_to_entity(uuid);
+
+        if (child.has_component<TransformComp>())
+            child.get_component<TransformComp>().translate(delta);
+        
+        apply_translation_on_children(parent_scene,child, delta);
+    }
+}
+
+void apply_translation_on_children(Scene* parent_scene, Entity current, const glm::mat4& delta) {
+    if (!current.is_parent()) return;
+
+    for (const auto& uuid : current.get_children()) {
+        Entity child = parent_scene->uuid_to_entity(uuid);
+
+        if (child.has_component<TransformComp>())
+            child.get_component<TransformComp>().apply_mat(delta);
+       
+        apply_translation_on_children(parent_scene,child, delta);
+    }
+}
