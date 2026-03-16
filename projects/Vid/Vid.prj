@@ -1,0 +1,64 @@
+Project Name: Vid
+Root Path: projects\Vid
+Startup Scene: ClassRoom
+Flip Textures On Load: true
+Paths:
+  Scenes:
+    - scenes
+  Shaders:
+    - shaders
+  Textures:
+    - textures
+  Meshes:
+    - meshes
+  Scripts:
+    - scripts
+Layers:
+  Layer 0:
+    Depth Test: true
+    Wireframe Mode: false
+  Layer 1:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 2:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 3:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 4:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 5:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 6:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 7:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 8:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 9:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 10:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 11:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 12:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 13:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 14:
+    Depth Test: false
+    Wireframe Mode: false
+  Layer 15:
+    Depth Test: false
+    Wireframe Mode: false
