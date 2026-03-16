@@ -40,7 +40,7 @@ static const std::unordered_map<std::string, CompMakerFn> StrCompFactory = {
          ImVec2 size = ImGui::GetWindowSize();
          e.add_component<CameraComp>(CameraBuilder().up({0,1,0}).fovy(70)
                                                     .framebuffer_size(size.x, size.y)
-                                                    .present_shader(scene->get_shader("camerapresent.glsl"))
+                                                    .present_shader(scene->get_shader("DefaultCameraPresent.glsl"))
                                                     .build()); 
      }
     },

@@ -142,6 +142,7 @@ void Greeter::open_project(const fs::path& path, bool add_paths) {
     const ProjectData& data = read_project_file(path, manager, add_paths, false);
     if (!data.startup_scene.empty()) {
         DU_DEBUG_TRACE("Selected scene: {}", data.startup_scene);
+        DU_DEBUG_TRACE("Saaaelected scene: {}", data.startup_scene);
         editor->working_scene = manager->get_scene(data.startup_scene.c_str());
     }
 

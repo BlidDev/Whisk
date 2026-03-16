@@ -69,7 +69,7 @@ void EScene::make_viewer() {
     viewer.add_component<TransformComp>(TransformBuilder().position(glm::vec3{0.0f, 2.0f, 4.0f}));
     viewer.add_component<CameraComp>(CameraBuilder().pitch(0.0f).yaw(0.0f)
                                                     .framebuffer_size(size.x, size.y)
-                                                    .present_shader(get_shader("camerapresent.glsl"))
+                                                    .present_shader(get_shader("DefaultCameraPresent.glsl"))
                                                     .build());
     auto& lua = viewer.add_component<LuaActionComp>(viewer.uuid()).add(this, "editorcam.lua");
     lua.get_last().on_init();
@@ -90,6 +90,7 @@ void EScene::on_create() {
     {
         RootReseter r(&manager->project_data);
         register_shader("res/shaders/picker.glsl");
+        register_shader("res/shaders/DefaultCameraPresent.glsl");
         manager->register_script("res/scripts/editorcam.lua");
     }
 
