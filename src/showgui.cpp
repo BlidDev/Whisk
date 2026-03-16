@@ -39,7 +39,7 @@ void saveas_working_file(SceneManager* manager, EScene* editor) {
 void EScene::save_project() {
     ProjectData& data = manager->project_data;
     if(data.root_path.empty()) {
-        const char* tmp_path = tinyfd_selectFolderDialog("Select Directory To Save Project", std::filesystem::current_path().c_str());
+        const char* tmp_path = tinyfd_selectFolderDialog("Select Directory To Save Project", std::filesystem::current_path().NARROW());
         if (!tmp_path) return;
         data.root_path = tmp_path;
     }
@@ -48,14 +48,13 @@ void EScene::save_project() {
     for (const auto& [k, s] : manager->get_scenes()) {
         if (k == "EDITOREditor" || k == "EDITORGreeter") continue;
         if (!s->file_path.empty() && s->uuids.empty()) continue; // exists but isn't loaded yet
-        std::string path = s->file_path;
+        fs::path path = s->file_path;
         if (path.empty())
-            path = std::format("{}/{}/{}.scene", data.root_path.string(), data.scene_paths[0].string(), s->name);
-        manager->write_scene_to_file(path.c_str(), s.get());
+            path = (data.root_path / data.scene_paths[0] / s->name) += ".scene";
+        manager->write_scene_to_file(path, s.get());
     }
-    std::string prj_path = std::format("{}/{}.prj", data.root_path.string(), data.name).c_str();
 
-    write_project_file(prj_path.c_str(), data, manager->render_data.layers_atrb.data());
+    write_project_file(data.prj_path, data, manager->render_data.layers_atrb.data());
 }
 
 size_t counter = 0;
@@ -603,8 +602,7 @@ void EScene::render_prj_settings() {
 
     //ImGui::SetCursorPosY(ImGui::GetWindowHeight() * 0.9f);
     if (ImGui::Button("Apply")) {
-        std::string prj_path = std::format("{}/{}.prj", data.root_path.string(), data.name).c_str();
-        write_project_file(prj_path.c_str(), data, manager->render_data.layers_atrb.data());
+        write_project_file(data.prj_path, data, manager->render_data.layers_atrb.data());
         show_project_settings = false;
     }
     ImGui::SameLine(0, 10.0f);

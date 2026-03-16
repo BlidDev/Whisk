@@ -9,7 +9,7 @@ RTScene::RTScene() : Scene("RT") {
 
 void RTScene::on_create() {
     if (!file_path.empty() && uuids.empty()) 
-        add_from_file(file_path.c_str());
+        add_from_file(file_path);
     player = uuid_to_entity(main_camera);
     lua_action_init(this);
     actions_init(this);

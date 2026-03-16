@@ -38,9 +38,6 @@ Entities:
       - Path: trigger.lua
         Fields:
           this: [u, 2240326152093192729]
-      - Path: cube.lua
-        Fields:
-          this: [u, 2240326152093192729]
   - Entity: 11152776846094461390
     Tag:
       Tag: Light
@@ -107,9 +104,9 @@ Entities:
     Lua Actions:
       - Path: player.lua
         Fields:
+          this: [u, 9703913328098630830]
           init_speed: [i, 3]
           jump: [i, 10]
-          this: [u, 9703913328098630830]
           sensi: [f, 0.1]
     SptLight:
       Color: [0.5261538, 0.5261538, 0.5261538]

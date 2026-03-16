@@ -1,6 +1,6 @@
 Project Name: Thing
 Root Path: projects/Thing
-Startup Scene: Show
+Startup Scene: Main
 Flip Textures On Load: true
 Paths:
   Scenes:

@@ -105,7 +105,7 @@ public:
 
 public:
     Scene* working_scene;
-    std::string save_path;
+    std::filesystem::path save_path;
 
     ResourceLists resource_lists;
 private:

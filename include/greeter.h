@@ -25,12 +25,12 @@ public:
     void detect_projects();
 
     void create_project();
-    void open_project(const char* path, bool add_paths);
+    void open_project(const std::filesystem::path& path, bool add_paths);
     void render_existing_projects();
 
     GreeterState state;
     EScene* editor;
     ProjectData tmp_data;
 
-    std::vector<std::string>detected_projects;
+    std::vector<std::filesystem::path>detected_projects;
 };

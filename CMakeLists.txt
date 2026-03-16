@@ -8,21 +8,18 @@ set(CMAKE_EXE_LINKER_FLAGS "-fuse-ld=gold")
 
 include("cmake/settings.cmake")
 
-#set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "Disable GLFW examples")
-#set(GLFW_BUILD_TESTS OFF CACHE BOOL "Disable GLFW tests")
-#set(GLFW_BUILD_DOCS OFF CACHE BOOL "Disable GLFW docs")
-#set(GLFW_STATIC TRUE CACHE BOOL "Set to build as static library")
-#add_subdirectory("vendor/glfw")
-
 add_subdirectory("vendor/dou_engine")
 
 set(OUT_PATH "${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME} - ${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}")
 
 set(NAME whisk)
-file(GLOB whisk_SRC
+
+file(GLOB_RECURSE whisk_SRC 
+    "src/*.cpp" 
     "src/*.c"
-    "src/*.cpp"
-    )
+    "include/*.h" 
+    "include/*.hpp"
+)
 
 file(GLOB editor_SRC
     "vendor/imgui/*.cpp"
@@ -33,6 +30,7 @@ file(GLOB editor_SRC
 )
 
 add_executable(${NAME} ${${NAME}_SRC} ${editor_SRC})
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${whisk_SRC})
 
 set_target_properties(${NAME} 
     PROPERTIES

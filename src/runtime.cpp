@@ -8,10 +8,9 @@ void run_rt_scene(EScene *editor) {
     editor->save_project();
 
     const ProjectData& project_data = editor->manager->project_data;
-    std::string path = std::format("{}/{}.prj", project_data.root_path.c_str(), project_data.name);
-
     SceneManager rt_manager;
-    read_project_file(path.c_str(), &rt_manager, false, true);
+
+    read_project_file(project_data.prj_path, &rt_manager, false, true);
 
     {
         SceneManager* emanager = editor->manager;

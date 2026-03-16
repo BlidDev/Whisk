@@ -47,7 +47,7 @@ void Greeter::on_update(float dt) {
                     if(ImGui::Button("Open An Existing Project")) {
                         const char* filter[] = {"*.prj"};
                         const char* path = tinyfd_openFileDialog("Open A Project File", 
-                                (std::filesystem::current_path() / "projects").c_str(),
+                                (std::filesystem::current_path() / "projects").NARROW(),
                                 1, filter, nullptr, false);
                         open_project(path, true);
                     }
@@ -90,11 +90,11 @@ void Greeter::create_project() {
 
        ImGui::Dummy({0, 10.0f});
        std::filesystem::path current(tmp_data.root_path / tmp_data.name);
-       ImGui::Text("Current Location: %s", current.c_str());
+       ImGui::Text("Current Location: %s", current.NARROW());
        bool exists = std::filesystem::is_directory(current);
        ImGui::SameLine(0, 10.0f);
        if (ImGui::Button("Browse...")) {
-            char* path = tinyfd_selectFolderDialog("Select Folder For Project", tmp_data.root_path.c_str());
+            char* path = tinyfd_selectFolderDialog("Select Folder For Project", tmp_data.root_path.NARROW());
             if(path) {
                 tmp_data.root_path = path;
             }
@@ -118,10 +118,11 @@ void Greeter::create_project() {
                tmp_data.mesh_paths.push_back("meshes");
                tmp_data.script_paths.push_back("scripts");
 
-               std::string prj_path = std::format("{}/{}.prj", current.string(), tmp_data.name).c_str();
-               write_project_file(prj_path.c_str(), tmp_data);
+               const fs::path prj_path = std::format("{}/{}.prj", current.string(), tmp_data.name);
+               write_project_file(prj_path, tmp_data);
                tmp_data.root_path = last;
-               open_project(prj_path.c_str(), true);
+               tmp_data.prj_path = prj_path;
+               open_project(prj_path, true);
            }
            ImGui::SameLine(0, 10.0f);
        }
@@ -135,8 +136,8 @@ void Greeter::create_project() {
 }
 
 
-void Greeter::open_project(const char* path, bool add_paths) {
-    if (!path) return;
+void Greeter::open_project(const fs::path& path, bool add_paths) {
+    if (path.empty()) return;
 
     const ProjectData& data = read_project_file(path, manager, add_paths, false);
     if (!data.startup_scene.empty()) {
@@ -147,7 +148,6 @@ void Greeter::open_project(const char* path, bool add_paths) {
     manager->set_current("EDITOREditor");
 }
 
-namespace fs = std::filesystem;
 
 void Greeter::detect_projects() {
     for(const auto& entry : fs::directory_iterator("projects")) {
@@ -156,7 +156,7 @@ void Greeter::detect_projects() {
         fs::path path = std::format("projects/{}/{}.prj", name, name);
         if (!fs::exists(path)) continue;
         detected_projects.push_back(path);
-        DU_DEBUG_TRACE("Detected: {}", path.c_str());
+        DU_DEBUG_TRACE("Detected: {}", path);
     }
 }
 
@@ -177,12 +177,12 @@ void Greeter::render_existing_projects() {
     }
 
     for (const auto& path : detected_projects) {
-        ImGui::Text("%s", path.c_str());
+        ImGui::Text("%s", path.NARROW());
         ImGui::SameLine();
         float width = ImGui::GetWindowWidth();
         ImGui::SetCursorPosX((width * 0.93)- ImGui::CalcTextSize("Open").x);
-        if (ImGui::Button(std::format("Open##{}", path).c_str())) {
-            open_project(path.c_str(), true);
+        if (ImGui::Button(fmt::format("Open##{}", path).c_str())) {
+            open_project(path, true);
         }
     }
 

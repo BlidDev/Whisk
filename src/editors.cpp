@@ -111,14 +111,14 @@ void EScene::on_create() {
             if (working_scene->file_path.empty()) return;
             save_path = working_scene->file_path;
             DU_WARN("Startup scene was not set, selecting {}", n);
-            working_scene->add_from_file(working_scene->file_path.c_str()); return;
+            working_scene->add_from_file(working_scene->file_path); return;
             manager->project_data.startup_scene = s->name;
         }
 
     }
     else {
         if(!working_scene->uuids.empty() || working_scene->file_path.empty()) return;
-        working_scene->add_from_file(working_scene->file_path.c_str());
+        working_scene->add_from_file(working_scene->file_path);
     }
 }
 

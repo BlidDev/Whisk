@@ -91,3 +91,8 @@ void uuid_select(const char* label,Scene* scene, UUID& subject) {
 void apply_translation_on_children(Scene* parent_scene, Entity current, const glm::vec3& delta);
 
 void apply_translation_on_children(Scene* parent_scene, Entity current, const glm::mat4& delta);
+
+#define NARROW() string().c_str()
+
+
+namespace fs = std::filesystem;
