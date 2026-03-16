@@ -17,7 +17,6 @@ if(MSVC)
   set(CMAKE_CXX_FLAGS_RELEASE "/O2 /DNDEBUG")
 
 
-  set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 
   add_compile_options("/utf-8")
 else()
@@ -27,11 +26,11 @@ else()
 endif()
 
 if (WIN32) 
+    set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     add_compile_definitions(SPDLOG_WCHAR_TO_UTF8_SUPPORT)
 endif()
 
-
-add_compile_definitions($<$<CONFIG:Debug>:DU_DEBUG>)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     set(DYNAMIC_SOURCE ${CMAKE_SOURCE_DIR})

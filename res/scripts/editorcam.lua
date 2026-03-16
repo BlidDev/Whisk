@@ -24,13 +24,10 @@ function on_update(dt)
     end
 
     velocity = vec3.new(0.0)
-  
-    if is_key_down(util.KeyboardKey.Q) then velocity.y =  -0.1 end
-    if is_key_down(util.KeyboardKey.E) then velocity.y =   0.1 end
-
 
     local f = is_key(util.KeyboardKey.W) - is_key(util.KeyboardKey.S)
     local r = is_key(util.KeyboardKey.D) - is_key(util.KeyboardKey.A)
+    local u = is_key(util.KeyboardKey.E) - is_key(util.KeyboardKey.Q)
 
     -- sprint
     speed = is_key_down(util.KeyboardKey.LEFT_SHIFT) and speed * 3 or speed
@@ -42,11 +39,11 @@ function on_update(dt)
 
     local forward = get_camera_flat_forward(cm)
     local right   = get_camera_right(cm)
+    local up = cm.up
 
 
 
-    local move = (forward * f) + (right * r)
-    move.y = 0.0
+    local move = (forward * f) + (right * r) + (up * u)
     velocity = velocity +  move * speed * dt
 
     t:translate(velocity)
