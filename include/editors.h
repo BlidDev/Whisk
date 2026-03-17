@@ -98,6 +98,9 @@ public:
     Scene* create_scene(const char* name);
     void render_create_scene();
 
+    // Entity Deletion ================================== 
+    bool is_entity_deleted(const UUID& entity);
+    bool delete_entity(const UUID& entity, bool delete_children);
 
 
     EditorViewer::State& get_editorviewer_state();
@@ -131,6 +134,9 @@ private:
     bool gizmo_snap;
     bool gizmo_fine;
     bool gizmo_solo;
+
+private:
+    DeleteCache<Scene::MAX_DELETE_CACHE> delete_cache;
 };
 
 void open_working_file(SceneManager* manager, RTScene* working_scene, EScene* editor);

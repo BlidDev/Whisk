@@ -59,6 +59,8 @@ EScene::EScene() : Scene("Editor") {
     guizmo_mode = ImGuizmo::MODE::WORLD;
     gizmo_snap = false;
     gizmo_fine = false;
+
+    delete_cache.fill(UUID::null);
 }
 
 
@@ -76,7 +78,7 @@ void EScene::make_viewer() {
 }
 
 void EScene::on_create() {
-    manager->main_window.maximize();
+    //manager->main_window.maximize();
     init_imgui();
 
 
@@ -161,3 +163,17 @@ EditorViewer::State& EScene::get_editorviewer_state() {
     return viewer.get_component<EditorViewer>().state;
 }
 
+bool EScene::is_entity_deleted(const UUID &entity) {
+    return std::find(delete_cache.begin(), delete_cache.end(), entity) != delete_cache.end();
+}
+
+bool EScene::delete_entity(const UUID &entity, bool delete_children) {
+    if (!entity.valid()) return false;
+    delete_cache.fill(UUID::null);
+    size_t index = 0;
+    working_scene->cache_remove_entity(entity, delete_cache, index, delete_children);
+    if (selected == entity) {
+        selected = 0; return false;
+    }
+    return true;
+}

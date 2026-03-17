@@ -469,6 +469,7 @@ void add_children(Entity& self, Scene* scene) {
         for (const auto& e : view) {
             if (e == self.id()) continue;;
             Entity tmp = {scene, e};
+            if (get_entities_relation(*scene, self.uuid(), tmp.uuid()) != 0) continue;
             bool is_selected = e == current;
             if (ImGui::Selectable(make_entity_name(tmp).c_str(), is_selected)) {
                 current = e;
@@ -510,7 +511,7 @@ void EScene::render_overview(bool is_selected) {
     if (!is_selected || !selected) {ImGui::End(); return;}
 
     Entity tmp = working_scene->uuid_to_entity(selected);
-    ImGui::Text("UUID: %lu", (uint64_t)tmp.uuid());
+    ImGui::Text("UUID: %llu", (uint64_t)tmp.uuid());
     ImGui::SameLine();
     if (ImGui::Button("Copy"))
         ImGui::SetClipboardText(std::format("{}", (uint64_t)tmp.uuid()).c_str());
@@ -519,10 +520,10 @@ void EScene::render_overview(bool is_selected) {
     TRY_COMPONENT(tmp, TagComp, tag, DUMMY);
     try_transform(tmp);
 
-    TRY_COMPONENT(tmp, ChildrenComp, children, NOSPACE,working_scene, tmp);
-    add_children(tmp, working_scene);
-    DUMMY;
-    TRY_COMPONENT(tmp, ParentComp, parent, DUMMY,working_scene, tmp);
+    //TRY_COMPONENT(tmp, ChildrenComp, children, NOSPACE,working_scene, tmp);
+    //add_children(tmp, working_scene);
+    //DUMMY;
+    //TRY_COMPONENT(tmp, ParentComp, parent, DUMMY,working_scene, tmp);
 
     TRY_COMPONENT(tmp, LuaActionComp, luascript, DUMMY, working_scene);
     TRY_COMPONENT(tmp, ModelComp, model, DUMMY, manager);

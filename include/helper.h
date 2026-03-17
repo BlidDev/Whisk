@@ -96,3 +96,14 @@ void apply_translation_on_children(Scene* parent_scene, Entity current, const gl
 
 
 namespace fs = std::filesystem;
+
+template<typename T>
+void drop_target(const char* payload_name, std::function<void(const T*)>action) {
+    if (ImGui::BeginDragDropTarget()) {
+        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("DND_UUID")) {
+            const T* dragged = (const T*)payload->Data;
+            action(dragged);
+        }
+        ImGui::EndDragDropTarget();
+    }
+}

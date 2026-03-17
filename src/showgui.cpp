@@ -172,7 +172,7 @@ void EScene::render_entities(bool *has_selected) {
     ImGui::Begin("Entities", nullptr, ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_MenuBar);
 
     if (ImGui::BeginMenuBar()) {
-
+        ImGui::Text("Num: %d", working_scene->uuids.size());
         if (ImGui::BeginMenu("New")) {
             if( ImGui::MenuItem("Empty Entity") ) {
                 auto e = working_scene->create_entity();
@@ -200,25 +200,44 @@ void EScene::render_entities(bool *has_selected) {
             ImGui::EndMenu();
         }
 
-        if (selected) {
-            ImGui::SameLine(0, 10.0f);
-            if (ImGui::Button("Delete")) {
-                working_scene->remove_entity(selected);
-                selected = 0;
-                *has_selected = false;
-            }
-        }
-
         ImGui::EndMenuBar();
     }
     
+    float width = ImGui::GetWindowWidth();
+    float height = ImGui::GetTextLineHeight();
+    ImVec2 pos = ImGui::GetCursorPos();
+    ImGui::Dummy(ImVec2(width, height));
+    drop_target<UUID>("DND_UUID", [this](const UUID* dropped) {
+        Entity chosen = this->working_scene->uuid_to_entity(*dropped);
+        if (!chosen.is_child()) return;
+        chosen.remove_parent();
+    });
+    ImGui::SetCursorPos(pos);
+    ImGui::TextDisabled("Root>");
 
-    for (const auto& [_, entity] : working_scene->uuids) {
+
+    auto uuids = working_scene->uuids;
+
+    for (const auto& [uuid, entity] : uuids) {
+        if (is_entity_deleted(uuid)) continue;
         Entity tmp = {working_scene, entity};
         if (tmp.is_child())
             continue;
         render_entity(tmp, has_selected, true);
     }
+
+    if (*has_selected && is_key_clicked(GLFW_KEY_DELETE))
+        *has_selected = delete_entity(selected, true);
+
+    ImVec2 remaining_size = ImGui::GetContentRegionAvail();
+    remaining_size.y = std::max(remaining_size.y, 20.0f);
+    ImGui::Dummy(remaining_size);
+    drop_target<UUID>("DND_UUID", [this](const UUID* dropped) {
+        Entity chosen = this->working_scene->uuid_to_entity(*dropped);
+        if (!chosen.is_child()) return;
+        chosen.remove_parent();
+    });
+
     ImGui::End();
 }
 
@@ -240,13 +259,34 @@ void EScene::render_entity(Entity current, bool *has_selected, bool root) {
     }
 
     bool entity_node = ImGui::TreeNodeEx(name.c_str(), flags);
+
+    if (ImGui::IsItemClicked()) {
+        selected = current.uuid();
+    }
+
+    UUID current_uuid = current.uuid();
+    if (ImGui::BeginDragDropSource()) {
+        ImGui::SetDragDropPayload("DND_UUID", &current_uuid, sizeof(UUID));
+        ImGui::EndDragDropSource();
+    }
+
+    drop_target<UUID>("DND_UUID", [this, &current, &current_uuid](const UUID* dropped) {
+        if (current_uuid == *dropped) return;
+        if (get_entities_relation(*this->working_scene, current_uuid, *dropped) == -1) return;
+        Entity tmp = this->working_scene->uuid_to_entity(*dropped);
+        tmp.make_child_of(current_uuid);
+    });
+
     if (entity_node) {
-        if (ImGui::IsItemClicked()) {
-            selected = current.uuid();
-        }
         if (ImGui::BeginPopupContextItem()) {
             if (ImGui::MenuItem("Duplicate"))
                 selected = clone_entity_recursively(working_scene, current.uuid(), true);
+            if (ImGui::MenuItem("Delete")) {
+                *has_selected = delete_entity(current.uuid(), true);
+            }
+            if (ImGui::MenuItem("Delete(keep children)")) {
+                *has_selected = delete_entity(current.uuid(), false);
+            }
             ImGui::EndPopup();
         }
 
@@ -258,6 +298,7 @@ void EScene::render_entity(Entity current, bool *has_selected, bool root) {
 
         ImGui::TreePop();
     }
+
     ImGui::PopID();
 }
 
