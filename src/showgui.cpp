@@ -57,7 +57,7 @@ void EScene::save_project() {
     write_project_file(data.prj_path, data, manager->render_data.layers_atrb.data());
 }
 
-size_t counter = 0;
+engine::ContainedTimer counter(200);
 
 EditorState EScene::update_imgui(float dt) {
 
@@ -67,7 +67,6 @@ EditorState EScene::update_imgui(float dt) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     EditorState state = EditorState::EditorNormal;
 
-    counter++;
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
@@ -77,25 +76,25 @@ EditorState EScene::update_imgui(float dt) {
     int _save[] = {GLFW_KEY_LEFT_CONTROL, GLFW_KEY_S};
     int _saveas[] = {GLFW_KEY_LEFT_CONTROL, GLFW_KEY_LEFT_SHIFT, GLFW_KEY_S};
 
-    if (!is_working) counter = 0;
 
-    if (get_editorviewer_state() != EditorViewer::State::Natual) counter = 0;
+    if (!is_working) counter.reset();
 
-    if (check_key_combo(_open, 2) && counter > 10){
+    if (get_editorviewer_state() != EditorViewer::State::Natual) counter.reset();
+
+    if (check_key_combo(_open, 2) && counter.allow_and_reset()){
         add_to_working_file(manager, working_scene, this);
-        counter = 0;
     }
-    else if (check_key_combo(_save, 2) && counter > 10){
+    else if (check_key_combo(_save, 2) && counter.allow_and_reset()){
         save_project();
-        counter = 0;
     }
-    else if (check_key_combo(_saveas, 3) && counter > 10){
+    else if (check_key_combo(_saveas, 3) && counter.allow_and_reset()){
         saveas_working_file(manager, this);
-        counter = 0;
     }
-    else if (is_key_pressed(GLFW_KEY_F5) && counter > 10) {
-        state = EditorState::EditorPreview;
-        counter = 0;
+    else if (is_key_pressed(GLFW_KEY_F5) && counter.allow_and_reset()) {
+        if (working_scene->main_camera.valid() && !manager->project_data.startup_scene.empty()) {
+            state = EditorState::EditorPreview;
+        }
+        else { DU_ERROR("Cannot enter runtime mode: Check Scene Settings->Main Camera or File->Project Settings->Startup Scene"); }
     }
 
     if (ImGui::BeginMainMenuBar()) {
@@ -240,9 +239,15 @@ void EScene::render_entity(Entity current, bool *has_selected, bool root) {
         *has_selected = true;
     }
 
-    if (ImGui::TreeNodeEx(name.c_str(), flags)) {
+    bool entity_node = ImGui::TreeNodeEx(name.c_str(), flags);
+    if (entity_node) {
         if (ImGui::IsItemClicked()) {
             selected = current.uuid();
+        }
+        if (ImGui::BeginPopupContextItem()) {
+            if (ImGui::MenuItem("Duplicate"))
+                selected = clone_entity_recursively(working_scene, current.uuid(), true);
+            ImGui::EndPopup();
         }
 
         if (current.is_parent()) {

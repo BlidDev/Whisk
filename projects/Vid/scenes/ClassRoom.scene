@@ -5,73 +5,6 @@ Render Data:
   Ambient Strength: 0.1
   Clear Color: [0, 0, 0, 0]
 Entities:
-  - Entity: 12052534218541187735
-    Tag:
-      Tag: Teacher
-    Transform:
-      Position: [0.08605787, 0.37913626, -2.3831778]
-      Size: [1.3326991, 0.5833333, 0.5521241]
-      Rotation: [0, -0, 0]
-    Model:
-      Mesh Name: cube
-      Layer: 0
-      Immune: false
-      Material:
-        Shader: basic.glsl
-        Ambient: [1, 1, 1]
-        Diffuse: [1, 1, 1]
-        Specular: [1, 1, 1]
-        Shininess: 32
-        Texture: UNKNOWN
-        Is Textured: false
-        Texture Repeats: [1, 1]
-  - Entity: 13957677609928962430
-    Tag:
-      Tag: Classroom
-    Transform:
-      Position: [0, 0, 0]
-      Size: [0.9999997, 1, 0.9999997]
-      Rotation: [0, 0, 0]
-    Children:
-      - 7573999036012226227
-      - 6539808278897825102
-      - 11267910030370560692
-  - Entity: 11267910030370560692
-    Tag:
-      Tag: Lamp
-    Transform:
-      Position: [0, 1.9822202, 0]
-      Size: [5.01, 6, 7.0099998]
-      Rotation: [0, 0, 0]
-    Model:
-      Mesh Name: cube
-      Layer: 0
-      Immune: false
-      Material:
-        Shader: lighting.glsl
-        Ambient: [1, 1, 1]
-        Diffuse: [1, 1, 1]
-        Specular: [1, 1, 1]
-        Shininess: 32
-        Texture: proto.png
-        Is Textured: true
-        Texture Repeats: [1, 1]
-    Parent:
-      Parent: 13957677609928962430
-  - Entity: 6539808278897825102
-    Tag:
-      Tag: Light
-    Transform:
-      Position: [0.033749245, 2.691297, -0.117071845]
-      Size: [0.9999997, 1, 0.9999997]
-      Rotation: [0, 0, 0]
-    PntLight:
-      Color: [1, 0.841439, 0.3476923]
-      Constant: 1
-      Linear: 0.5
-      Quadratic: 0
-    Parent:
-      Parent: 13957677609928962430
   - Entity: 7573999036012226227
     Tag:
       Tag: Floor
@@ -94,3 +27,70 @@ Entities:
         Texture Repeats: [1, 1]
     Parent:
       Parent: 13957677609928962430
+  - Entity: 6539808278897825102
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [0.033749245, 2.691297, -0.117071845]
+      Size: [0.9999997, 1, 0.9999997]
+      Rotation: [0, 0, 0]
+    PntLight:
+      Color: [1, 0.841439, 0.3476923]
+      Constant: 1
+      Linear: 0.5
+      Quadratic: 0
+    Parent:
+      Parent: 13957677609928962430
+  - Entity: 11267910030370560692
+    Tag:
+      Tag: Lamp
+    Transform:
+      Position: [0, 1.9822202, 0]
+      Size: [5.01, 6, 7.0099998]
+      Rotation: [0, 0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 13957677609928962430
+  - Entity: 13957677609928962430
+    Tag:
+      Tag: Classroom
+    Transform:
+      Position: [0, 0, 0]
+      Size: [0.9999997, 1, 0.9999997]
+      Rotation: [0, 0, 0]
+    Children:
+      - 7573999036012226227
+      - 6539808278897825102
+      - 11267910030370560692
+  - Entity: 12052534218541187735
+    Tag:
+      Tag: Teacher
+    Transform:
+      Position: [0.08605787, 0.37913626, -2.3831778]
+      Size: [1.3326991, 0.5833333, 0.5521241]
+      Rotation: [0, -0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: UNKNOWN
+        Is Textured: false
+        Texture Repeats: [1, 1]
