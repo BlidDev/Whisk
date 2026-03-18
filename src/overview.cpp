@@ -511,7 +511,7 @@ void EScene::render_overview(bool is_selected) {
     if (!is_selected || !selected) {ImGui::End(); return;}
 
     Entity tmp = working_scene->uuid_to_entity(selected);
-    ImGui::Text("UUID: %llu", (uint64_t)tmp.uuid());
+    ImGui::Text("UUID: %s", std::to_string(tmp.uuid()).c_str());
     ImGui::SameLine();
     if (ImGui::Button("Copy"))
         ImGui::SetClipboardText(std::format("{}", (uint64_t)tmp.uuid()).c_str());

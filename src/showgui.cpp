@@ -172,7 +172,6 @@ void EScene::render_entities(bool *has_selected) {
     ImGui::Begin("Entities", nullptr, ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_MenuBar);
 
     if (ImGui::BeginMenuBar()) {
-        ImGui::Text("Num: %d", working_scene->uuids.size());
         if (ImGui::BeginMenu("New")) {
             if( ImGui::MenuItem("Empty Entity") ) {
                 auto e = working_scene->create_entity();
@@ -274,6 +273,7 @@ void EScene::render_entity(Entity current, bool *has_selected, bool root) {
         if (current_uuid == *dropped) return;
         if (get_entities_relation(*this->working_scene, current_uuid, *dropped) == -1) return;
         Entity tmp = this->working_scene->uuid_to_entity(*dropped);
+        if (tmp.is_child()) { if (tmp.get_parent().uuid() == current_uuid) return;}
         tmp.make_child_of(current_uuid);
     });
 
