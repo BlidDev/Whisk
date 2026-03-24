@@ -15,6 +15,7 @@ bool sameline_v3(const char* title, glm::vec3& v, float min = 0.F, float max = 0
 bool sameline_v2(const char* title, glm::vec2& v, float min = 0.F, float max = 0.F, float speed = 0.1f);
 bool sameline_float(const char* title, float* v, float min = 0.F, float max = 0.F, float speed = 0.1f);
 bool sameline_int(const char* title, int* v, int min = 0.F, int max = 0.F, int speed = 1);
+bool sameline_scalar(const char* title, void *v, ImGuiDataType type);
 
 template <typename T>
 void render_combo(const char* label, T* subject, const char** index, size_t arr_size) {
@@ -107,3 +108,5 @@ void drop_target(const char* payload_name, std::function<void(const T*)>action) 
         ImGui::EndDragDropTarget();
     }
 }
+
+ImRect get_regional_size(const glm::vec2& region, const glm::vec2& texture_size);

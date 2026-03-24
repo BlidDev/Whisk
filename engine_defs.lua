@@ -15,6 +15,22 @@ function on_update(dt) end
 function on_end() end
 ---@sectionback
 
+---@class UUID
+UUID = {}
+
+--- Default constructor for UUID - returns UUID.NULL
+---@return UUID
+function UUID:new() end
+
+--- Constructor of UUID
+---@param uuid integer
+---@return UUID
+function UUID:new(uuid) end
+
+--- Returns true if the given UUID is valid
+---@return boolean
+function UUID:valid() end
+
 ---@type Scene 
 ---The active Scene pointer injected by the engine.
 scene = nil
@@ -33,13 +49,13 @@ Entity = {}
 
 --- Creates a null/empty Entity
 --- @return Entity
-function Entity.new() end
+function Entity:new() end
 
 --- Creates an Entity from a Scene pointer and an EnTT handle
 --- @param scene Scene Parent scene
 --- @param id integer A registered EnTT entity ID number
 --- @return Entity
-function Entity.new(scene, id) end
+function Entity:new(scene, id) end
 
 --- Returns the unique persistent identifier (UUID) for this entity
 --- @return UUID
@@ -93,6 +109,10 @@ function SceneManager:set_should_close() end
 ---@field manager SceneManager
 Scene = {}
 
+--- Sets the given UUID entity as the main camera
+--- @param new_camera UUID
+function Scene:set_main_camera(new_camera) end
+
 --- Returns the registerd EnTT ID counterpart to a given UUID
 --- @param uuid UUID
 --- @return integer
@@ -116,12 +136,12 @@ function Scene:get_mesh(name) end
 
  --- Default constructor for Shader
  --- @return Shader
- function Shader.new() end
+ function Shader:new() end
 
  --- @param program integer OpenGL shader program ID
  --- @param path string Registered asset path
  --- @return Shader
- function Shader.new(program, path) end
+ function Shader:new(program, path) end
 
 ---@class Mesh
 ---@field VAO integer
@@ -153,6 +173,8 @@ function Scene:get_mesh(name) end
 ---@class Material
 ---@field shader Shader
 ---@field texture Texture
+---@field tex_repeat vec2
+---@field tex_offset vec2
 ---@field ambient vec3
 ---@field diffuse vec3 
 ---@field specular vec3
@@ -194,6 +216,14 @@ function MaterialBuilder:set_shininess(shininess) end
 ---@return MaterialBuilder returns MaterialBuilder reference
 function MaterialBuilder:set_attributes(attributes) end
 
+---@param tex_repeat vec2
+---@return MaterialBuilder returns MaterialBuilder reference
+function MaterialBuilder:set_tex_repeat(tex_repeat) end
+
+---@param tex_offset vec2
+---@return MaterialBuilder returns MaterialBuilder reference
+function MaterialBuilder:set_tex_offset(tex_offset) end
+
 ---Builds and return the Material object
 ---@return Material
 function MaterialBuilder:build() end
@@ -212,7 +242,7 @@ function MaterialBuilder:build() end
  --- @param x number
  --- @param y number
  --- @return vec2
-function vec2.new(x,y)end
+function vec2:new(x,y)end
 
 
 ---@class vec3
@@ -225,12 +255,7 @@ function vec2.new(x,y)end
  --- @param y number
  --- @param z number
  --- @return vec3
-function vec3.new(x,y,z)end
-
- --- Creates a new vec3 object
- --- @param v number
- --- @return vec3
-function vec3.new(v)end
+function vec3:new(x,y,z)end
 
 ---@class vec4
 ---@field x number
@@ -244,7 +269,7 @@ function vec3.new(v)end
  --- @param z number
  --- @param w number
  --- @return vec4
-function vec4.new(x,y,z,w)end
+function vec4:new(x,y,z,w)end
 --#endregion
 
 --#region Component checkers
@@ -477,7 +502,7 @@ TransformBuilder = {}
 
 --- Creates an TransformBuilder object
 --- @return TransformBuilder
-function TransformBuilder.new() end
+function TransformBuilder:new() end
 
 ---@param value vec3
 ---@return TransformBuilder returns TransformBuilder reference
@@ -507,13 +532,13 @@ Model = {}
 
  --- Default constructor for Model
  --- @return Model
- function Model.new() end
+ function Model:new() end
 
  --- @param mesh Mesh
  --- @param material Material
  --- @param layer integer
  --- @return Model
- function Model.new(mesh, material, layer) end
+ function Model:new(mesh, material, layer) end
 
 --#endregion
 
@@ -531,7 +556,7 @@ PhysicsBody = {}
 
 ---Default constructor for PhysicsBody
 ---@return PhysicsBody
-function PhysicsBody.new() end
+function PhysicsBody:new() end
 
 
 ---@return boolean
@@ -542,7 +567,7 @@ PhysicsBodyBuilder = {}
 
 --- Creates a PhysicsBodyBuilder object
 --- @return PhysicsBodyBuilder
-function PhysicsBodyBuilder.new() end
+function PhysicsBodyBuilder:new() end
 
 --- @param value number
 --- @return PhysicsBodyBuilder returns PhysicsBodyBuilder reference
@@ -625,7 +650,7 @@ DirLight = {}
 
 --- Default constructor
 --- @return DirLight
-function DirLight.new() end
+function DirLight:new() end
 
 --#endregion
 
@@ -639,7 +664,7 @@ PntLight = {}
 
 --- Default constructor
 --- @return PntLight
-function PntLight.new() end
+function PntLight:new() end
 
 --#endregion
 
@@ -656,7 +681,7 @@ SptLight = {}
 
 --- Default constructor
 --- @return SptLight
-function SptLight.new() end
+function SptLight:new() end
 
 --#endregion
 

@@ -88,6 +88,7 @@ public:
     void render_gizmo(ImVec2 pos, ImVec2 size);
     void render_hitboxes();
     void render_pickerview();
+    void render_camera_demo();
     entt::entity entity_from_view(ImVec2 pos, ImVec2 size);
     void pick_entity(ImRect view_rect);
 

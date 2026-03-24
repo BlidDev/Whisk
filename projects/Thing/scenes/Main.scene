@@ -5,16 +5,16 @@ Render Data:
   Ambient Strength: 0.3
   Clear Color: [0.7723077, 1, 0.98528755, 1]
 Entities:
-  - Entity: 13874073629702658488
+  - Entity: 3648529440317729638
     Tag:
       Tag: Unnamed Cube
     Transform:
-      Position: [0, 0, 4.3695006]
-      Size: [1, 1, 1]
-      Rotation: [0, 90, 0]
+      Position: [0, 2.6477866, -1.0531226]
+      Size: [0.99998665, 1, 0.9999866]
+      Rotation: [180, -79.94101, 180]
     Model:
-      Mesh Name: triangle_tl
-      Layer: 1
+      Mesh Name: Table
+      Layer: 0
       Immune: false
       Material:
         Shader: lighting.glsl
@@ -24,85 +24,7 @@ Entities:
         Shininess: 32
         Texture: proto.png
         Is Textured: true
-        Texture Repeats: [1, 1]
-  - Entity: 9703913328098630830
-    Tag:
-      Tag: Player
-    Transform:
-      Position: [-0.33162627, 3.3, 0]
-      Size: [0.2, 1, 0.2]
-      Rotation: [0, -0, 0]
-    PhysicsBody:
-      Gravity: 9.8
-      Mass: 10
-      Slipperiness: 0.025
-      Velocity: [0, 0, 0]
-      Is Solid: true
-      Is Static: true
-      Move Delta: [0, 0, 0]
-    Camera:
-      Pitch: -8.199997
-      Yaw: 0
-      Up: [0, 1, 0]
-      FovY: 70
-      Projection: Perspective
-      Max Distance: 30
-      Present Shader: camerapresent.glsl
-    Lua Actions:
-      - Path: player.lua
-        Fields:
-          sensi: [f, 0.1]
-          init_speed: [i, 3]
-          jump: [i, 10]
-          this: [u, 9703913328098630830]
-    SptLight:
-      Color: [0.5261538, 0.5261538, 0.5261538]
-      Direction: [0, -1, 0]
-      Constant: 1
-      Linear: 0.05
-      Quadratic: 0.021
-      Cut off: 9.1
-      Outer cut off: 24
-  - Entity: 7287929405305775506
-    Tag:
-      Tag: Unnamed Cube
-    Transform:
-      Position: [-0.33176744, 1, 0]
-      Size: [3.0000002, 3, 3.0000002]
-      Rotation: [0, 0, 0]
-    Model:
-      Mesh Name: cube
-      Layer: 0
-      Immune: false
-      Material:
-        Shader: lighting.glsl
-        Ambient: [1, 1, 1]
-        Diffuse: [1, 1, 1]
-        Specular: [1, 1, 1]
-        Shininess: 0
-        Texture: Bricks.png
-        Is Textured: true
-        Texture Repeats: [9, 9]
-    PhysicsBody:
-      Gravity: 0
-      Mass: 10
-      Slipperiness: 0.4
-      Velocity: [0, 0, 0]
-      Is Solid: true
-      Is Static: true
-      Move Delta: [0, 0, 0]
-  - Entity: 11152776846094461390
-    Tag:
-      Tag: Light
-    Transform:
-      Position: [5.3, 4.6, 0]
-      Size: [1, 1, 1]
-      Rotation: [0, 0, 0]
-    DirLight:
-      Direction: [0.5, -1, -0.3]
-      Ambient: 0.2
-      Color: [0.9692308, 0.89773935, 0.49505326]
-      Strength: 0.7
+        Texture Repeats: [5, 5]
   - Entity: 2240326152093192729
     Tag:
       Tag: f Cube
@@ -136,16 +58,94 @@ Entities:
       - Path: trigger.lua
         Fields:
           this: [u, 2240326152093192729]
-  - Entity: 3648529440317729638
+  - Entity: 11152776846094461390
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [5.3, 4.6, 0]
+      Size: [1, 1, 1]
+      Rotation: [0, 0, 0]
+    DirLight:
+      Direction: [0.5, -1, -0.3]
+      Ambient: 0.2
+      Color: [0.9692308, 0.89773935, 0.49505326]
+      Strength: 0.7
+  - Entity: 7287929405305775506
     Tag:
       Tag: Unnamed Cube
     Transform:
-      Position: [0, 2.6477866, -1.0531226]
-      Size: [0.99998665, 1, 0.9999866]
-      Rotation: [180, -79.94101, 180]
+      Position: [-0.33176744, 1, 0]
+      Size: [3.0000002, 3, 3.0000002]
+      Rotation: [0, 0, 0]
     Model:
-      Mesh Name: Table
+      Mesh Name: cube
       Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: Bricks.png
+        Is Textured: true
+        Texture Repeats: [9, 9]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.4
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+  - Entity: 9703913328098630830
+    Tag:
+      Tag: Player
+    Transform:
+      Position: [-0.33162627, 3.3, 0]
+      Size: [0.2, 1, 0.2]
+      Rotation: [0, -0, 0]
+    PhysicsBody:
+      Gravity: 9.8
+      Mass: 10
+      Slipperiness: 0.025
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Camera:
+      Pitch: -8.199997
+      Yaw: 0
+      Up: [0, 1, 0]
+      FovY: 70
+      Projection: Perspective
+      Max Distance: 30
+      Present Shader: camerapresent.glsl
+    Lua Actions:
+      - Path: player.lua
+        Fields:
+          jump: [i, 10]
+          init_speed: [i, 3]
+          sensi: [f, 0.1]
+          this: [u, 9703913328098630830]
+    SptLight:
+      Color: [0.5261538, 0.5261538, 0.5261538]
+      Direction: [0, -1, 0]
+      Constant: 1
+      Linear: 0.05
+      Quadratic: 0.021
+      Cut off: 9.1
+      Outer cut off: 24
+  - Entity: 13874073629702658488
+    Tag:
+      Tag: Unnamed Cube
+    Transform:
+      Position: [0, 0, 4.3695006]
+      Size: [1, 1, 1]
+      Rotation: [0, 90, 0]
+    Model:
+      Mesh Name: triangle_tl
+      Layer: 1
       Immune: false
       Material:
         Shader: lighting.glsl
@@ -155,4 +155,4 @@ Entities:
         Shininess: 32
         Texture: proto.png
         Is Textured: true
-        Texture Repeats: [5, 5]
+        Texture Repeats: [1, 1]

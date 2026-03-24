@@ -1,5 +1,3 @@
--- res/fps_controller.
-
 local phys
 local trans
 local cam

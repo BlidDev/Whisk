@@ -92,7 +92,9 @@ void EScene::on_create() {
     {
         RootReseter r(&manager->project_data);
         register_shader("res/shaders/picker.glsl");
-        register_shader("res/shaders/DefaultCameraPresent.glsl");
+        const auto& sl = manager->shader_lib;
+        if (sl.find("DefaultCameraPresent.glsl") == sl.end())
+            register_shader("res/shaders/DefaultCameraPresent.glsl");
         manager->register_script("res/scripts/editorcam.lua");
     }
 

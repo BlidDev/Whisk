@@ -37,7 +37,7 @@ static const std::unordered_map<std::string, CompMakerFn> StrCompFactory = {
 
     {
      "CameraComp", [](Entity&e, Scene* scene){ 
-         ImVec2 size = ImGui::GetWindowSize();
+         ImVec2 size(854, 480);
          e.add_component<CameraComp>(CameraBuilder().up({0,1,0}).fovy(70)
                                                     .framebuffer_size(size.x, size.y)
                                                     .present_shader(scene->get_shader("DefaultCameraPresent.glsl"))
@@ -300,7 +300,7 @@ void render_camera(CameraComp& c) {
     if (sameline_float("Pitch", &pitch, -90.0f, 90.0f))
         c.set_pitch(pitch);
 
-    if (sameline_float("Yaw", &yaw, -90.0f, 90.0f))
+    if (sameline_float("Yaw", &yaw))
         c.set_yaw(yaw);
 
 
@@ -401,18 +401,24 @@ void render_luascript(LuaActionComp& l, Scene* scene) {
                 }
                 else if (v.is<float>()) {
                     float tmp = v.as<float>();
-                    sameline_float(std::format("{}: ", key).c_str(), &tmp);
-                    s.env[key] = tmp;
+                    if (sameline_float(std::format("{}: ", key).c_str(), &tmp))
+                        s.env[key] = tmp;
                 }
                 else if (v.is<glm::vec2>()) {
                     glm::vec2 tmp = v.as<glm::vec2>();
-                    sameline_v2(std::format("{}: ", key).c_str(), tmp);
-                    s.env[key] = tmp;
+                    if (sameline_v2(std::format("{}: ", key).c_str(), tmp))
+                        s.env[key] = tmp;
                 }
                 else if (v.is<glm::vec3>()) {
                     glm::vec3 tmp = v.as<glm::vec3>();
-                    sameline_v3(std::format("{}: ", key).c_str(), tmp);
-                    s.env[key] = tmp;
+                    if (sameline_v3(std::format("{}: ", key).c_str(), tmp))
+                        s.env[key] = tmp;
+                }
+                else if (v.is<UUID>()) {
+                    uint64_t tmp = v.as<UUID>();
+                    if (key == "this") continue;
+                    if (sameline_scalar(std::format("{}: ", key).c_str(), &tmp, ImGuiDataType_U64))
+                        s.env[key] = UUID(tmp);
                 }
             }
             if (ImGui::Button(std::format("Remove##{}", s.path).c_str())) {
@@ -508,7 +514,7 @@ void add_children(Entity& self, Scene* scene) {
   
 void EScene::render_overview(bool is_selected) {
     ImGui::Begin("Overview", nullptr, ImGuiWindowFlags_HorizontalScrollbar);
-    if (!is_selected || !selected) {ImGui::End(); return;}
+    if (!is_selected || !selected.valid()) {ImGui::End(); return;}
 
     Entity tmp = working_scene->uuid_to_entity(selected);
     ImGui::Text("UUID: %s", std::to_string(tmp.uuid()).c_str());

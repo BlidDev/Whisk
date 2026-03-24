@@ -10,7 +10,6 @@ RTScene::RTScene() : Scene("RT") {
 void RTScene::on_create() {
     if (!file_path.empty() && uuids.empty()) 
         add_from_file(file_path);
-    player = uuid_to_entity(main_camera);
     lua_action_init(this);
     actions_init(this);
     display_quad = get_mesh("DefaultDisplayQuad");
@@ -23,6 +22,7 @@ void RTScene::on_update(float dt) {
 
     if (fixed_physics(this, physics_tickrate, dt)) return;
 
+    player = uuid_to_entity(main_camera);
     glm::vec2 view = manager->main_window.size();
 
     rescale_camera_to_window(player.get_component<CameraComp>(), manager->main_window);

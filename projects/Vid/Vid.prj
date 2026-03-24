@@ -18,19 +18,19 @@ Layers:
     Depth Test: true
     Wireframe Mode: false
   Layer 1:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 2:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 3:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 4:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 5:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 6:
     Depth Test: false

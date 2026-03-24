@@ -1,30 +1,291 @@
 Scene: ClassRoom
 Render Data:
-  Main Camera: 0
+  Main Camera: 12639170370654235100
   Ambient: [1, 1, 1]
   Ambient Strength: 0.1
   Clear Color: [0, 0, 0, 0]
 Entities:
-  - Entity: 12052534218541187735
+  - Entity: 17855288636383730386
     Tag:
-      Tag: Teacher
+      Tag: WallParent
     Transform:
-      Position: [0.08605787, 0.37913626, -2.3831778]
-      Size: [1.3326991, 0.5833333, 0.5521241]
-      Rotation: [0, -0, 0]
+      Position: [0, 0, 0]
+      Size: [1, 1, 1]
+      Rotation: [0, 0, 0]
+    Children:
+      - 4424219887989852
+      - 8691612597985096827
+      - 11267910030370560692
+      - 7368660443904126573
+  - Entity: 349452189060806989
+    Tag:
+      Tag: Chair
+    Transform:
+      Position: [1.1869597, 0.58043295, -3.0224109]
+      Size: [0.9999993, 1, 0.9999993]
+      Rotation: [-5.4653306e-06, -89.98022, -5.4629722e-06]
     Model:
-      Mesh Name: cube
+      Mesh Name: Chair
       Layer: 0
       Immune: false
       Material:
-        Shader: basic.glsl
+        Shader: lighting.glsl
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
-        Texture: UNKNOWN
-        Is Textured: false
+        Texture: woodthing.png
+        Is Textured: true
         Texture Repeats: [1, 1]
+    Parent:
+      Parent: 12642181709063547065
+  - Entity: 12642181709063547065
+    Tag:
+      Tag: Student
+    Transform:
+      Position: [1.1869597, 0.44373327, -2.4694276]
+      Size: [1.4999999, 1.5, 1.4999999]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: Table
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 15516166917386573084
+    Children:
+      - 349452189060806989
+  - Entity: 11806713268565415510
+    Tag:
+      Tag: Chair
+    Transform:
+      Position: [-1.3130403, 0.5804331, -3.0224109]
+      Size: [0.9999993, 1, 0.9999993]
+      Rotation: [-5.4653306e-06, -89.98022, -5.4629722e-06]
+    Model:
+      Mesh Name: Chair
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 4375335746582572883
+  - Entity: 4375335746582572883
+    Tag:
+      Tag: Student
+    Transform:
+      Position: [-1.3130403, 0.44373327, -2.4694276]
+      Size: [1.4999999, 1.5, 1.4999999]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: Table
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 15516166917386573084
+    Children:
+      - 11806713268565415510
+  - Entity: 1431533219909031641
+    Tag:
+      Tag: Chair
+    Transform:
+      Position: [-1.3130403, 0.5804331, -1.0224109]
+      Size: [0.9999993, 1, 0.9999993]
+      Rotation: [-5.4653306e-06, -89.98022, -5.4629722e-06]
+    Model:
+      Mesh Name: Chair
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 12686898568010472690
+  - Entity: 12686898568010472690
+    Tag:
+      Tag: Student
+    Transform:
+      Position: [-1.3130403, 0.44373327, -0.4694276]
+      Size: [1.4999999, 1.5, 1.4999999]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: Table
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 15516166917386573084
+    Children:
+      - 1431533219909031641
+  - Entity: 13122564450177663635
+    Tag:
+      Tag: Chair
+    Transform:
+      Position: [1.2596385, 0.5804331, -1.0224109]
+      Size: [0.9999993, 1, 0.9999993]
+      Rotation: [-5.4653306e-06, -89.98022, -5.4629722e-06]
+    Model:
+      Mesh Name: Chair
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 7599502264912330393
+  - Entity: 7599502264912330393
+    Tag:
+      Tag: Student
+    Transform:
+      Position: [1.2596385, 0.44373327, -0.4694276]
+      Size: [1.4999999, 1.5, 1.4999999]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: Table
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 15516166917386573084
+    Children:
+      - 13122564450177663635
+  - Entity: 6253510809981335547
+    Tag:
+      Tag: Chair
+    Transform:
+      Position: [1.2596385, 0.5804331, 0.9775891]
+      Size: [0.9999993, 1, 0.9999993]
+      Rotation: [-5.4653306e-06, -89.98022, -5.4629722e-06]
+    Model:
+      Mesh Name: Chair
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 9134605984198796083
+  - Entity: 9134605984198796083
+    Tag:
+      Tag: Student
+    Transform:
+      Position: [1.2596385, 0.44373327, 1.5305724]
+      Size: [1.4999999, 1.5, 1.4999999]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: Table
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 15516166917386573084
+    Children:
+      - 6253510809981335547
+  - Entity: 5798888803670422797
+    Tag:
+      Tag: Chair
+    Transform:
+      Position: [-1.3130403, 0.5804331, 0.9775891]
+      Size: [0.9999993, 1, 0.9999993]
+      Rotation: [-5.4653306e-06, -89.98022, -5.4629722e-06]
+    Model:
+      Mesh Name: Chair
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 15516166917386573084
+  - Entity: 15331886340984318155
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [-0.12580815, 4.8003883, -0.014505476]
+      Size: [0.3, 0.3, 0.3]
+      Rotation: [0, -0, 0]
+    SptLight:
+      Color: [1, 1, 1]
+      Direction: [0, -1, 0]
+      Constant: 1
+      Linear: 0.05
+      Quadratic: 0.021
+      Cut off: 51.5
+      Outer cut off: 106.3
+    Parent:
+      Parent: 13957677609928962430
   - Entity: 13957677609928962430
     Tag:
       Tag: Classroom
@@ -34,17 +295,47 @@ Entities:
       Rotation: [0, 0, 0]
     Children:
       - 7573999036012226227
-      - 6539808278897825102
-      - 11267910030370560692
+      - 15331886340984318155
+      - 16609572150713336761
   - Entity: 11267910030370560692
     Tag:
-      Tag: Walls
+      Tag: RightWall
     Transform:
-      Position: [0, 1.9822202, 0]
-      Size: [5.01, 6, 7.0099998]
-      Rotation: [0, 0, 0]
+      Position: [-2.918083, 1.9822202, 0]
+      Size: [0.0050100004, 6, 11.112896]
+      Rotation: [0, -0, 0]
     Model:
       Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 0.897933, 0.37974685]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: UNKNOWN
+        Is Textured: false
+        Texture Repeats: [1, 1]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Parent:
+      Parent: 17855288636383730386
+  - Entity: 12052534218541187735
+    Tag:
+      Tag: Teacher
+    Transform:
+      Position: [-0.07868615, 0.37913626, 3.5006354]
+      Size: [1.9999998, 2, 2.0156093]
+      Rotation: [0, -89.98022, 0]
+    Model:
+      Mesh Name: Teacher
       Layer: 0
       Immune: false
       Material:
@@ -53,32 +344,70 @@ Entities:
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
-        Texture: proto.png
+        Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
     Parent:
-      Parent: 13957677609928962430
-  - Entity: 6539808278897825102
-    Tag:
-      Tag: Light
-    Transform:
-      Position: [0.033749245, 2.691297, -0.117071845]
-      Size: [0.9999997, 1, 0.9999997]
-      Rotation: [0, 0, 0]
-    PntLight:
-      Color: [1, 0.841439, 0.3476923]
-      Constant: 1
-      Linear: 0.5
-      Quadratic: 0
-    Parent:
-      Parent: 13957677609928962430
+      Parent: 7573999036012226227
   - Entity: 7573999036012226227
     Tag:
       Tag: Floor
     Transform:
       Position: [0, 0, 0]
-      Size: [4.999998, 0.2, 7.0000014]
-      Rotation: [0, 0, 0]
+      Size: [7.158758, 0.2, 37.984344]
+      Rotation: [0, -0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [0, 0, 0]
+        Diffuse: [0.71308017, 0.71308017, 0.71308017]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: proto.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Parent:
+      Parent: 13957677609928962430
+    Children:
+      - 12052534218541187735
+  - Entity: 12639170370654235100
+    Tag:
+      Tag: Viewer
+    Transform:
+      Position: [-0.0043015257, 1.3476212, 1.0257272]
+      Size: [1.0000002, 1, 1.0000002]
+      Rotation: [0, 2.673264, 0]
+    Camera:
+      Pitch: 5.399994
+      Yaw: 108.5
+      Up: [0, 1, 0]
+      FovY: 70
+      Projection: Perspective
+      Max Distance: 30
+      Framebuffer:
+        Width: 854
+        Height: 480
+      Present Shader: DefaultCameraPresent.glsl
+    Parent:
+      Parent: 800291361302022968
+  - Entity: 4424219887989852
+    Tag:
+      Tag: LeftWall
+    Transform:
+      Position: [2.9439793, 1.9822202, 0]
+      Size: [0.0050100004, 6, 14.387973]
+      Rotation: [0, -0, 0]
     Model:
       Mesh Name: cube
       Layer: 0
@@ -86,11 +415,251 @@ Entities:
       Material:
         Shader: lighting.glsl
         Ambient: [1, 1, 1]
-        Diffuse: [1, 1, 1]
+        Diffuse: [1, 0.897933, 0.37974685]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: UNKNOWN
+        Is Textured: false
+        Texture Repeats: [1, 1]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Parent:
+      Parent: 17855288636383730386
+  - Entity: 8691612597985096827
+    Tag:
+      Tag: BackWall
+    Transform:
+      Position: [0.55339813, 2, -3.5096552]
+      Size: [0.005009996, 6, 7.0099993]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 0.897933, 0.37974685]
         Specular: [1, 1, 1]
         Shininess: 0
         Texture: UNKNOWN
         Is Textured: false
         Texture Repeats: [1, 1]
     Parent:
+      Parent: 17855288636383730386
+  - Entity: 7368660443904126573
+    Tag:
+      Tag: FrontWall
+    Transform:
+      Position: [0.6, 1.9000624, 5.304417]
+      Size: [11, 6, 0.1]
+      Rotation: [0, -0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 0.897933, 0.37974685]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: UNKNOWN
+        Is Textured: false
+        Texture Repeats: [1, 1]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Parent:
+      Parent: 17855288636383730386
+    Children:
+      - 10179013434907040126
+  - Entity: 16609572150713336761
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [-0.12580815, 3.136893, 2.6419063]
+      Size: [0.3, 0.3, 0.3]
+      Rotation: [0, -0, 0]
+    PntLight:
+      Color: [1, 1, 1]
+      Constant: 1
+      Linear: 0.05
+      Quadratic: 0.6
+    Parent:
       Parent: 13957677609928962430
+  - Entity: 9655383771966426511
+    Tag:
+      Tag: Board
+    Transform:
+      Position: [-0.03473741, 1.7369812, 5.69]
+      Size: [3.2574298, 1.8333334, 1]
+      Rotation: [0, -0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [0, 1, 0]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: UNKNOWN
+        Is Textured: false
+        Texture Repeats: [1, 1]
+    Parent:
+      Parent: 10179013434907040126
+  - Entity: 15516166917386573084
+    Tag:
+      Tag: Student
+    Transform:
+      Position: [-1.3130403, 0.44373327, 1.5305724]
+      Size: [1.4999999, 1.5, 1.4999999]
+      Rotation: [0, 89.98022, 0]
+    Model:
+      Mesh Name: Table
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+    Children:
+      - 5798888803670422797
+      - 9134605984198796083
+      - 7599502264912330393
+      - 12686898568010472690
+      - 4375335746582572883
+      - 12642181709063547065
+  - Entity: 800291361302022968
+    Tag:
+      Tag: Character
+    Transform:
+      Position: [-1.5263267, 0.8650627, 4.4932985]
+      Size: [1.6400021, 1.64, 0.10000013]
+      Rotation: [0, -16.309998, 0]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: character.png
+        Is Textured: true
+        Texture Repeats: [0.25, 0.25]
+    PhysicsBody:
+      Gravity: 9
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: false
+      Move Delta: [0, 0, 0]
+    Lua Actions:
+      - Path: sprite.lua
+        Fields:
+          this: [u, 800291361302022968]
+      - Path: character.lua
+        Fields:
+          Speed: [f, 30]
+          StraightCam: [u, 8733798803940700876]
+          SideCam: [u, 12639170370654235100]
+          this: [u, 800291361302022968]
+    Children:
+      - 12639170370654235100
+      - 8733798803940700876
+  - Entity: 10179013434907040126
+    Tag:
+      Tag: Board Frame
+    Transform:
+      Position: [-0.03473741, 1.7369812, 5.691161]
+      Size: [3.5535598, 2, 1]
+      Rotation: [0, -0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [0.6666666, 0.6666666, 0.6666666]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: woodthing.png
+        Is Textured: true
+        Texture Repeats: [0.2, 0.2]
+    Parent:
+      Parent: 7368660443904126573
+    Children:
+      - 9655383771966426511
+  - Entity: 14125416462715500513
+    Tag:
+      Tag: Unnamed Cube
+    Transform:
+      Position: [2.9439793, 0.9822202, 0]
+      Size: [2, 2.419477, 9.5]
+      Rotation: [0, -0, 0]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+  - Entity: 7247668794076708160
+    Tag:
+      Tag: Unnamed Cube
+    Transform:
+      Position: [-0.5559721, 0.9822211, 5.950462]
+      Size: [6.432648, 2.419477, 2.384703]
+      Rotation: [0, -0, 0]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+  - Entity: 8733798803940700876
+    Tag:
+      Tag: ViewerStraight
+    Transform:
+      Position: [-1.6933619, 1.3733892, 3.1055946]
+      Size: [1.0000002, 1, 1.0000002]
+      Rotation: [0, 2.673264, 0]
+    Camera:
+      Pitch: -4.5
+      Yaw: 90
+      Up: [0, 1, 0]
+      FovY: 70
+      Projection: Perspective
+      Max Distance: 30
+      Framebuffer:
+        Width: 854
+        Height: 480
+      Present Shader: DefaultCameraPresent.glsl
+    Parent:
+      Parent: 800291361302022968

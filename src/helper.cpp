@@ -88,6 +88,12 @@ bool sameline_int(const char* title, int* v, int min, int max, int speed) {
     return ImGui::DragInt(std::format("##{}", title).c_str(), v, speed,min, max);
 }
 
+bool sameline_scalar(const char* title, void *v, ImGuiDataType type) {
+    ImGui::Text("%s", title);
+    ImGui::SameLine(0.0f, 10.0f);
+    return ImGui::InputScalar(std::format("##{}", title).c_str(), type, v);
+}
+
 
 
 
@@ -174,4 +180,24 @@ void apply_translation_on_children(Scene* parent_scene, Entity current, const gl
        
         apply_translation_on_children(parent_scene,child, delta);
     }
+}
+
+ImRect get_regional_size(const glm::vec2& region, const glm::vec2& texture_size) {
+    float tex_ratio = texture_size.x / texture_size.y;
+    float reg_ratio = region.x / region.y;
+    ImVec2 scaled;
+    ImVec2 padding(0.0f, 0.0f);
+
+    if (reg_ratio > tex_ratio) {
+        scaled.y = region.y;
+        scaled.x = region.y * tex_ratio;
+        padding.x = (region.x - scaled.x) * 0.5f;
+    }
+    else {
+        scaled.x = region.x;
+        scaled.y = region.x * tex_ratio;
+        padding.y = (region.y - scaled.y) * 0.5f;
+    }
+
+    return ImRect(scaled, padding);
 }

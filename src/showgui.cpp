@@ -149,6 +149,7 @@ EditorState EScene::update_imgui(float dt) {
         render_resources();
         render_entities(&has_selected);
         render_overview(has_selected);
+        render_camera_demo();
     }
     if (show_project_settings)
         render_prj_settings();
@@ -185,13 +186,18 @@ void EScene::render_entities(bool *has_selected) {
             if( ImGui::MenuItem("Cube") ) {
                 auto e = working_scene->create_entity();
                 e.add_component<TagComp>("Unnamed Cube");
-                e.add_component<TransformComp>();
+                auto& created_trans = e.add_component<TransformComp>();
                 e.add_component<ModelComp>(working_scene->get_mesh("cube"), 
                                            MaterialBuilder()
                                                            .set_shader(working_scene->get_shader("basic.glsl"))
                                                            .set_color(glm::vec3(1.0f)));
                 if (selected) {
                     e.make_child_of(selected);
+                    Entity tmp_parent = working_scene->uuid_to_entity(selected);
+                    if (tmp_parent.has_component<TransformComp>()) {
+                        const auto& pos = tmp_parent.get_component<TransformComp>().position();
+                        created_trans.set_position(pos);
+                    }
                 }
                 selected = e.uuid();
             }
@@ -291,7 +297,13 @@ void EScene::render_entity(Entity current, bool *has_selected, bool root) {
         }
 
         if (current.is_parent()) {
-            for (const auto& child : current.get_children()) {
+            constexpr const size_t MAX_CACHE = 256;
+            std::array<UUID,MAX_CACHE> cache;
+            std::fill(cache.begin(), cache.end(), UUID::null);
+            const auto& children = current.get_children();
+            for (int i = 0; i < children.size(); i++) cache[i] = children[i];
+            for (const auto& child : cache) {
+                if (!child.valid()) break;
                 render_entity(working_scene->uuid_to_entity(child), has_selected);
             }
         }
@@ -395,7 +407,11 @@ void EScene::render_editorview(float dt) {
             ImGui::PopStyleVar(1);
             ImGui::PopStyleColor(2);
 
-            if (ImGui::IsMouseHoveringRect(view_rect.Min, view_rect.Max) && ImGui::IsMouseReleased(ImGuiMouseButton_Left) && !radio)
+            if (ImGui::IsMouseHoveringRect(view_rect.Min, view_rect.Max) 
+                 && ImGui::IsMouseReleased(ImGuiMouseButton_Left) 
+                 && !ImGui::IsAnyItemActive()
+                 && !GImGui->MovingWindow
+                 && !radio)
             {pick_entity(view_rect);}
 
         }break;
@@ -492,16 +508,16 @@ void EScene::render_hitboxes() {
 
     auto hitboxes = working_scene->registry.view<TransformComp>(entt::exclude<ModelComp>);
     const Mesh& cube = get_mesh("cube");
-    Shader& shader = get_shader("basic.glsl");
+    Shader& shader = get_shader("picker.glsl");
 
-    entt::entity selected_entt = (selected) ? working_scene->uuid_to_entt(selected) : entt::null;
+    entt::entity selected_entt = (selected.valid()) ? working_scene->uuid_to_entt(selected) : entt::null;
 
     glUseProgram(shader);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     for (const auto& [e, t] : hitboxes.each()) {
         if (e == selected_entt) continue;
-        set_shader_v3(shader, "material.ambient", {0.5f,0.5f,0.5f});
+        set_shader_v3(shader, "id_color", {0.5f,0.5f,0.5f});
         glm::mat4 model = t.get_model();
         set_shader_m4(shader, "model", model);
 
@@ -516,7 +532,7 @@ void EScene::render_hitboxes() {
     if(selected) {
 
         Entity tmp = working_scene->uuid_to_entity(selected);
-        set_shader_v3(shader, "material.ambient", {0.0f,0.0f,0.0f});
+        set_shader_v3(shader, "id_color", {0.0f,0.0f,0.0f});
         if (!tmp.has_component<TransformComp>()) goto end;
         glm::mat4 model = tmp.get_component<TransformComp>().get_model();
         set_shader_m4(shader, "model", model);
@@ -734,6 +750,7 @@ void EScene::render_create_scene() {
                     working_scene = tmp;
                 set_current = true;
                 scene_name = "";
+                selected = UUID::null;
 
                 creating_scene = false;
                 resource_lists = ResourceLists();
@@ -832,7 +849,7 @@ void EScene::render_grid(ImVec2 pos, ImVec2 size) {
 
 void EScene::render_gizmo(ImVec2 pos, ImVec2 size) {
 
-    if (!selected) return;
+    if (!selected.valid()) return;
 
     TransformComp& view_trans = viewer.get_component<TransformComp>();
     CameraComp& view_cam = viewer.get_component<CameraComp>();
@@ -895,5 +912,31 @@ void EScene::render_gizmo(ImVec2 pos, ImVec2 size) {
         apply_translation_on_children(working_scene, e_selected, scale_free); return;
     }
 
+}
+
+
+void EScene::render_camera_demo() {
+    if (!selected.valid()) return;
+    Entity tmp = working_scene->uuid_to_entity(selected);
+    if (!tmp.has_component<CameraComp>() || !tmp.has_component<TransformComp>()) return;
+
+    ImGui::Begin("Camera Preview");
+
+    CameraComp& cam = tmp.get_component<CameraComp>();
+    const auto& cam_size = cam.framebuffer.last_scale;
+    draw_to_camera(manager->render_data, cam_size, tmp, working_scene->registry, &working_scene->s_render_data, true);
+
+    ImVec2 size =ImGui::GetContentRegionAvail();
+    ImVec2 pos = ImGui::GetCursorPos();
+
+    ImRect packet = get_regional_size(glm::vec2{size.x ,size.y}, cam_size);
+    const auto& scale = packet.Min; const auto& padding = packet.Max;
+
+    ImGui::SetCursorPosX(pos.x + padding.x);
+    ImGui::SetCursorPosY(pos.y + padding.y);
+
+    ImGui::Image(cam.framebuffer.texture, scale, ImVec2(0,1), ImVec2(1,0));
+
+    ImGui::End();
 }
 
