@@ -17,60 +17,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/$<CONFIG>")
 
-set(NAME whisk)
 
-file(GLOB_RECURSE whisk_SRC 
-    "src/*.cpp" 
-    "src/*.c"
-    "include/*.h" 
-    "include/*.hpp"
-)
-
-file(GLOB editor_SRC
-    "vendor/imgui/*.cpp"
-    "vendor/ImGuizmo/*.cpp"
-    "vendor/imgui/backends/*.cpp"
-    "vendor/imgui/misc/cpp/*.cpp"
-    "vendor/tinyfiledialogs/tinyfiledialogs.cpp"
-)
-
-add_executable(${NAME} ${${NAME}_SRC} ${editor_SRC})
-source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${whisk_SRC})
-
-target_include_directories(${NAME} PRIVATE
-    "include"
-    "vendor/include"
-    "vendor/dou_engine/vendor/glfw/include"
-    "vendor/dou_engine/vendor/glad/include"
-    "vendor/dou_engine/vendor/glm"
-    "vendor/imgui"
-    "vendor/ImGuizmo"
-    "vendor/imgui/backends"
-    "vendor/tinyfiledialogs"
-    "vendor/google_md"
-)
-
-
-set(HEADER_FILES PRIVATE 
-    "vendor/dou_engine/engine/include/epch.h"
-    "vendor/dou_engine/engine/include/engine.h"
-    "vendor/google_md/IconsMaterialDesign.h"
-)
-
-find_package(OpenGL REQUIRED)
-
-target_precompile_headers(${NAME} PRIVATE ${HEADER_FILES})
-target_compile_definitions(${NAME} PUBLIC IMGUI_IMPL_OPENGL_LOADER_CUSTOM)
-
-if(UNIX AND NOT APPLE)
-    target_link_libraries(${NAME} PRIVATE
-        X11
-        Xi
-        Xcursor
-        Xrandr
-        Xinerama
-    )
-endif()
-
-
-target_link_libraries(${NAME} PRIVATE OpenGL::GL engine)
+add_subdirectory("editor")
+add_subdirectory("player")

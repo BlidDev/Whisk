@@ -5,6 +5,20 @@ Render Data:
   Ambient Strength: 0.1
   Clear Color: [0, 0, 0, 0]
 Entities:
+  - Entity: 17334069474862664660
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [-0.12580815, 5.9301143, 4.644656]
+      Size: [0.3, 0.3, 0.3]
+      Rotation: [0, -0, 0]
+    PntLight:
+      Color: [0.95384616, 0.8189215, 0.29936096]
+      Constant: 1
+      Linear: 0.05
+      Quadratic: 0.6
+    Parent:
+      Parent: 13957677609928962430
   - Entity: 17855288636383730386
     Tag:
       Tag: WallParent
@@ -37,6 +51,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 12642181709063547065
   - Entity: 12642181709063547065
@@ -59,6 +74,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 15516166917386573084
     Children:
@@ -83,6 +99,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 4375335746582572883
   - Entity: 4375335746582572883
@@ -105,6 +122,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 15516166917386573084
     Children:
@@ -129,6 +147,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 12686898568010472690
   - Entity: 12686898568010472690
@@ -151,6 +170,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 15516166917386573084
     Children:
@@ -175,6 +195,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 7599502264912330393
   - Entity: 7599502264912330393
@@ -197,6 +218,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 15516166917386573084
     Children:
@@ -221,6 +243,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 9134605984198796083
   - Entity: 9134605984198796083
@@ -243,6 +266,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 15516166917386573084
     Children:
@@ -267,6 +291,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 15516166917386573084
   - Entity: 15331886340984318155
@@ -297,11 +322,13 @@ Entities:
       - 7573999036012226227
       - 15331886340984318155
       - 16609572150713336761
+      - 12106828933686844738
+      - 17334069474862664660
   - Entity: 11267910030370560692
     Tag:
       Tag: RightWall
     Transform:
-      Position: [-2.918083, 1.9822202, 0]
+      Position: [-2.918083, 2, 0]
       Size: [0.0050100004, 6, 11.112896]
       Rotation: [0, -0, 0]
     Model:
@@ -310,13 +337,14 @@ Entities:
       Immune: false
       Material:
         Shader: lighting.glsl
-        Ambient: [1, 1, 1]
-        Diffuse: [1, 0.897933, 0.37974685]
+        Ambient: [1, 0.9647059, 0.7294118]
+        Diffuse: [1, 0.9647059, 0.7294118]
         Specular: [1, 1, 1]
         Shininess: 0
-        Texture: UNKNOWN
-        Is Textured: false
-        Texture Repeats: [1, 1]
+        Texture: wall.png
+        Is Textured: true
+        Texture Repeats: [3, 1.5]
+        Texture Offsets: [0, 0]
     PhysicsBody:
       Gravity: 0
       Mass: 10
@@ -347,6 +375,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 7573999036012226227
   - Entity: 7573999036012226227
@@ -354,7 +383,7 @@ Entities:
       Tag: Floor
     Transform:
       Position: [0, 0, 0]
-      Size: [7.158758, 0.2, 37.984344]
+      Size: [10.738137, 0.2, 37.984344]
       Rotation: [0, -0, 0]
     Model:
       Mesh Name: cube
@@ -369,6 +398,7 @@ Entities:
         Texture: proto.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     PhysicsBody:
       Gravity: 0
       Mass: 10
@@ -385,27 +415,32 @@ Entities:
     Tag:
       Tag: Viewer
     Transform:
-      Position: [-0.0043015257, 1.3476212, 1.0257272]
-      Size: [1.0000002, 1, 1.0000002]
-      Rotation: [0, 2.673264, 0]
+      Position: [1.0666151, 1.763, 1.0257266]
+      Size: [0.3, 0.3, 0.5]
+      Rotation: [0, -0, 0]
     Camera:
-      Pitch: 5.399994
-      Yaw: 108.5
+      Pitch: 1.6000061
+      Yaw: 127.8
       Up: [0, 1, 0]
-      FovY: 70
+      FovY: 47.4
       Projection: Perspective
       Max Distance: 30
       Framebuffer:
         Width: 854
         Height: 480
       Present Shader: DefaultCameraPresent.glsl
+    Lua Actions:
+      - Path: camera.lua
+        Fields:
+          Speed: [f, 1]
+          this: [u, 12639170370654235100]
     Parent:
       Parent: 800291361302022968
   - Entity: 4424219887989852
     Tag:
       Tag: LeftWall
     Transform:
-      Position: [2.9439793, 1.9822202, 0]
+      Position: [3.3401716, 2, 0]
       Size: [0.0050100004, 6, 14.387973]
       Rotation: [0, -0, 0]
     Model:
@@ -415,12 +450,13 @@ Entities:
       Material:
         Shader: lighting.glsl
         Ambient: [1, 1, 1]
-        Diffuse: [1, 0.897933, 0.37974685]
+        Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 0
-        Texture: UNKNOWN
-        Is Textured: false
-        Texture Repeats: [1, 1]
+        Texture: wall.png
+        Is Textured: true
+        Texture Repeats: [3, 1.5]
+        Texture Offsets: [0, 0]
     PhysicsBody:
       Gravity: 0
       Mass: 10
@@ -451,13 +487,14 @@ Entities:
         Texture: UNKNOWN
         Is Textured: false
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 17855288636383730386
   - Entity: 7368660443904126573
     Tag:
       Tag: FrontWall
     Transform:
-      Position: [0.6, 1.9000624, 5.304417]
+      Position: [0.6, 2, 5.304417]
       Size: [11, 6, 0.1]
       Rotation: [0, -0, 0]
     Model:
@@ -467,12 +504,13 @@ Entities:
       Material:
         Shader: lighting.glsl
         Ambient: [1, 1, 1]
-        Diffuse: [1, 0.897933, 0.37974685]
+        Diffuse: [1, 0.96417516, 0.72923076]
         Specular: [1, 1, 1]
         Shininess: 0
-        Texture: UNKNOWN
-        Is Textured: false
-        Texture Repeats: [1, 1]
+        Texture: wall.png
+        Is Textured: true
+        Texture Repeats: [3, 1.5]
+        Texture Offsets: [0, 0]
     PhysicsBody:
       Gravity: 0
       Mass: 10
@@ -493,7 +531,7 @@ Entities:
       Size: [0.3, 0.3, 0.3]
       Rotation: [0, -0, 0]
     PntLight:
-      Color: [1, 1, 1]
+      Color: [0.95384616, 0.8189215, 0.29936096]
       Constant: 1
       Linear: 0.05
       Quadratic: 0.6
@@ -503,7 +541,7 @@ Entities:
     Tag:
       Tag: Board
     Transform:
-      Position: [-0.03473741, 1.7369812, 5.69]
+      Position: [-0.03473741, 1.8369187, 5.69]
       Size: [3.2574298, 1.8333334, 1]
       Rotation: [0, -0, 0]
     Model:
@@ -519,6 +557,7 @@ Entities:
         Texture: UNKNOWN
         Is Textured: false
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 10179013434907040126
   - Entity: 15516166917386573084
@@ -541,6 +580,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
     Children:
       - 5798888803670422797
       - 9134605984198796083
@@ -552,15 +592,15 @@ Entities:
     Tag:
       Tag: Character
     Transform:
-      Position: [-1.5263267, 0.8650627, 4.4932985]
-      Size: [1.6400021, 1.64, 0.10000013]
-      Rotation: [0, -16.309998, 0]
+      Position: [-1.5263267, 1.4801365, 4.4932985]
+      Size: [2, 2.0418, 0.124500155]
+      Rotation: [180, 17.4, 180]
     Model:
       Mesh Name: quad_tex
       Layer: 1
       Immune: false
       Material:
-        Shader: basic.glsl
+        Shader: character.glsl
         Ambient: [1, 1, 1]
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
@@ -568,6 +608,7 @@ Entities:
         Texture: character.png
         Is Textured: true
         Texture Repeats: [0.25, 0.25]
+        Texture Offsets: [2, 0]
     PhysicsBody:
       Gravity: 9
       Mass: 10
@@ -579,13 +620,14 @@ Entities:
     Lua Actions:
       - Path: sprite.lua
         Fields:
+          ToggledModes: [b, false]
           this: [u, 800291361302022968]
       - Path: character.lua
         Fields:
-          Speed: [f, 30]
+          this: [u, 800291361302022968]
           StraightCam: [u, 8733798803940700876]
           SideCam: [u, 12639170370654235100]
-          this: [u, 800291361302022968]
+          Speed: [f, 30]
     Children:
       - 12639170370654235100
       - 8733798803940700876
@@ -593,7 +635,7 @@ Entities:
     Tag:
       Tag: Board Frame
     Transform:
-      Position: [-0.03473741, 1.7369812, 5.691161]
+      Position: [-0.03473741, 1.8369187, 5.691161]
       Size: [3.5535598, 2, 1]
       Rotation: [0, -0, 0]
     Model:
@@ -609,6 +651,7 @@ Entities:
         Texture: woodthing.png
         Is Textured: true
         Texture Repeats: [0.2, 0.2]
+        Texture Offsets: [0, 0]
     Parent:
       Parent: 7368660443904126573
     Children:
@@ -617,7 +660,7 @@ Entities:
     Tag:
       Tag: Unnamed Cube
     Transform:
-      Position: [2.9439793, 0.9822202, 0]
+      Position: [2.7265613, 0.9822202, 0]
       Size: [2, 2.419477, 9.5]
       Rotation: [0, -0, 0]
     PhysicsBody:
@@ -632,7 +675,7 @@ Entities:
     Tag:
       Tag: Unnamed Cube
     Transform:
-      Position: [-0.5559721, 0.9822211, 5.950462]
+      Position: [-0.5559721, 1, 5.950462]
       Size: [6.432648, 2.419477, 2.384703]
       Rotation: [0, -0, 0]
     PhysicsBody:
@@ -647,8 +690,8 @@ Entities:
     Tag:
       Tag: ViewerStraight
     Transform:
-      Position: [-1.6933619, 1.3733892, 3.1055946]
-      Size: [1.0000002, 1, 1.0000002]
+      Position: [-1.3987356, 1.9508386, 3.8923056]
+      Size: [0.3, 0.3, 0.5]
       Rotation: [0, 2.673264, 0]
     Camera:
       Pitch: -4.5
@@ -661,5 +704,27 @@ Entities:
         Width: 854
         Height: 480
       Present Shader: DefaultCameraPresent.glsl
+    Lua Actions:
+      - Path: camera.lua
+        Fields:
+          Speed: [f, 1]
+          this: [u, 8733798803940700876]
     Parent:
       Parent: 800291361302022968
+  - Entity: 12106828933686844738
+    Tag:
+      Tag: TableCollider
+    Transform:
+      Position: [0, 0, 3.4263124]
+      Size: [1.6836063, 1.5495396, 1.1822902]
+      Rotation: [0, -0, 0]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Parent:
+      Parent: 13957677609928962430

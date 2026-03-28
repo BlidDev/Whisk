@@ -113,6 +113,10 @@ Scene = {}
 --- @param new_camera UUID
 function Scene:set_main_camera(new_camera) end
 
+--- Returns the main camera UUID
+--- @return UUID
+function Scene:get_main_camera() end
+
 --- Returns the registerd EnTT ID counterpart to a given UUID
 --- @param uuid UUID
 --- @return integer
@@ -256,6 +260,21 @@ function vec2:new(x,y)end
  --- @param z number
  --- @return vec3
 function vec3:new(x,y,z)end
+
+ --- Creates a new vec3 object
+ --- @param v number
+ --- @return vec3
+function vec3:new(v)end
+
+ --- Creates a new vec3 object
+ --- @return vec3
+function vec3:new()end
+
+ --- Creates a new vec3 object
+ --- @param lhs vec2
+ --- @param rhs number
+ --- @return vec3
+function vec3:new(lhs, rhs)end
 
 ---@class vec4
 ---@field x number
@@ -459,8 +478,15 @@ UUID = {}
 --#region Transform
 ---@class Transform
 Transform = {}
+
+---Returns the current position vector
+---@return vec3
 function Transform:position() end
+---Returns the current scale vector
+---@return vec3
 function Transform:size() end
+---Returns the current rotation vector (degrees)
+---@return vec3
 function Transform:rotation() end
 
 ---@param new_position vec3

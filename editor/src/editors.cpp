@@ -78,7 +78,7 @@ void EScene::make_viewer() {
 }
 
 void EScene::on_create() {
-    //manager->main_window.maximize();
+    manager->main_window.maximize();
     init_imgui();
 
 

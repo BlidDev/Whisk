@@ -407,7 +407,7 @@ void EScene::render_editorview(float dt) {
             ImGui::PopStyleVar(1);
             ImGui::PopStyleColor(2);
 
-            if (ImGui::IsMouseHoveringRect(view_rect.Min, view_rect.Max) 
+            if (ImGui::IsWindowHovered() 
                  && ImGui::IsMouseReleased(ImGuiMouseButton_Left) 
                  && !ImGui::IsAnyItemActive()
                  && !GImGui->MovingWindow

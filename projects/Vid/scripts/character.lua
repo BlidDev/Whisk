@@ -4,17 +4,23 @@ local trans
 Speed = 5.0
 StraightCam = UUID:new(0)
 SideCam = UUID:new(0)
-local SSS = UUID:new(0)
+
+local original_rot = vec3:new()
+local billboard_rot = nil
 
 function on_init()
     phys = get_physicsbody(scene, this)
     trans = get_transform(scene, this)
 
+    original_rot = trans:rotation()
+    billboard_rot = vec3:new(original_rot.x, 0.0, original_rot.z)
 end
 
 
 
 function on_update(dt)
+    if is_key_down(util.KeyboardKey.LEFT_CONTROL) then return end
+    
     -- get input
     local f = Is_key(util.KeyboardKey.UP) - Is_key(util.KeyboardKey.DOWN)
     local r = Is_key(util.KeyboardKey.RIGHT) - Is_key(util.KeyboardKey.LEFT)
@@ -25,16 +31,18 @@ function on_update(dt)
         phys.velocity.y = jump_force
     end
 
-    if is_key_clicked(util.KeyboardKey.LEFT_SHIFT) and StraightCam ~= nil then
-        scene:set_main_camera(StraightCam)
-    end
-
     if is_key_clicked(util.KeyboardKey.k2) and StraightCam:valid()  then
         scene:set_main_camera(StraightCam)
+        trans:set_rotation(billboard_rot)
     end
 
     if is_key_clicked(util.KeyboardKey.k1) and SideCam:valid() then
         scene:set_main_camera(SideCam)
+        trans:set_rotation(original_rot)
+    end
+
+    if is_key_clicked(util.KeyboardKey.TAB) then 
+        trans:rotate_y(180)
     end
 
 

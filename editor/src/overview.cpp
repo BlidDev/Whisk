@@ -343,6 +343,7 @@ void render_model(ModelComp& m, SceneManager* manager) {
             }
             render_lib_select("Texture", m.material.texture, m.material.texture.path, manager->texture_lib);
             sameline_v2("TexRep", m.material.tex_repeat, 0.0f, 0.F, 1.0f);
+            sameline_v2("TexOff", m.material.tex_offset, 0.0f, 0.F, 1.0f);
         }
 
 
