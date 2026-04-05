@@ -1,19 +1,12 @@
 local phys
-local trans
 
 Speed = 5.0
 StraightCam = UUID:new(0)
 SideCam = UUID:new(0)
 
-local original_rot = vec3:new()
-local billboard_rot = nil
 
 function on_init()
     phys = get_physicsbody(scene, this)
-    trans = get_transform(scene, this)
-
-    original_rot = trans:rotation()
-    billboard_rot = vec3:new(original_rot.x, 0.0, original_rot.z)
 end
 
 
@@ -33,16 +26,10 @@ function on_update(dt)
 
     if is_key_clicked(util.KeyboardKey.k2) and StraightCam:valid()  then
         scene:set_main_camera(StraightCam)
-        trans:set_rotation(billboard_rot)
     end
 
     if is_key_clicked(util.KeyboardKey.k1) and SideCam:valid() then
         scene:set_main_camera(SideCam)
-        trans:set_rotation(original_rot)
-    end
-
-    if is_key_clicked(util.KeyboardKey.TAB) then 
-        trans:rotate_y(180)
     end
 
 

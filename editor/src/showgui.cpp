@@ -376,7 +376,7 @@ void EScene::render_editorview(float dt) {
             anticolor *= 255.0f;
             ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(anticolor.x, anticolor.y, anticolor.z, 255));
             ImGui::PushStyleColor(ImGuiCol_CheckMark, IM_COL32(anticolor.x, anticolor.y, anticolor.z, 255));
-            ImGui::SetCursorPos({20.0f,10.0f});
+            ImGui::SetCursorPos({20.0f, 20.0f});
 
             bool radio = false;
 

@@ -33,11 +33,18 @@ local bindings = {
     [util.KeyboardKey.F] = modes["ohno"],
     [util.KeyboardKey.G] = modes["scawy"],
     [util.KeyboardKey.B] = modes["blue"],
+    
+    [util.KeyboardKey.Z] = modes["teacher"],
 }
 
 local default_mode  = modes["teacher"]
 
 ToggledModes = false
+
+
+local original_rot = vec3:new()
+local billboard_rot = nil
+local trans
 
 function on_init()
     if has_modelcomp(scene, this) then
@@ -45,6 +52,11 @@ function on_init()
     end
 
     material.tex_offset = default_mode
+
+    trans = get_transform(scene, this)
+
+    original_rot = trans:rotation()
+    billboard_rot = vec3:new(original_rot.x, 0.0, original_rot.z)
 end
 
 
@@ -66,4 +78,16 @@ function on_update(dt)
     if ToggledModes then return end
 
     material.tex_offset = default_mode
+
+    if is_key_clicked(util.KeyboardKey.k2) then
+        trans:set_rotation(billboard_rot)
+    end
+
+    if is_key_clicked(util.KeyboardKey.k1) then
+        trans:set_rotation(original_rot)
+    end
+
+    if is_key_clicked(util.KeyboardKey.TAB) then
+        trans:rotate_y(180)
+    end
 end

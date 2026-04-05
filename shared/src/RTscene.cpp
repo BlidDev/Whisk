@@ -28,9 +28,7 @@ void RTScene::on_update(float dt) {
     rescale_camera_to_window(player.get_component<CameraComp>(), manager->main_window);
     draw_to_camera(manager->render_data, view, player, registry, &s_render_data);
     present_camera(player, display_quad);
-    glfwSwapBuffers(manager->main_window);
-    glfwPollEvents();
-
+    manager->main_window.swap_and_poll();
 }
 
 void RTScene::on_end() {
