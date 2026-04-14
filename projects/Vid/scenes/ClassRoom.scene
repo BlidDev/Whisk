@@ -81,8 +81,8 @@ Entities:
     Lua Actions:
       - Path: sprite.lua
         Fields:
-          this: [u, 18003564158831256656]
           ToggledModes: [b, false]
+          this: [u, 18003564158831256656]
     Parent:
       Parent: 800291361302022968
   - Entity: 11688925914518761610
@@ -534,8 +534,8 @@ Entities:
     Lua Actions:
       - Path: camera.lua
         Fields:
-          this: [u, 12639170370654235100]
           Speed: [f, 1]
+          this: [u, 12639170370654235100]
   - Entity: 4424219887989852
     Tag:
       Tag: LeftWall
@@ -706,10 +706,10 @@ Entities:
     Lua Actions:
       - Path: character.lua
         Fields:
-          SideCam: [u, 12639170370654235100]
-          this: [u, 800291361302022968]
-          Speed: [f, 15]
           StraightCam: [u, 8733798803940700876]
+          this: [u, 800291361302022968]
+          SideCam: [u, 12639170370654235100]
+          Speed: [f, 15]
     Children:
       - 8733798803940700876
       - 18003564158831256656
@@ -789,8 +789,8 @@ Entities:
     Lua Actions:
       - Path: camera.lua
         Fields:
-          this: [u, 8733798803940700876]
           Speed: [f, 1]
+          this: [u, 8733798803940700876]
     Parent:
       Parent: 800291361302022968
   - Entity: 12106828933686844738

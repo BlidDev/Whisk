@@ -1,0 +1,143 @@
+Scene: link
+Render Data:
+  Main Camera: 0
+  Ambient: [1, 1, 1]
+  Ambient Strength: 0.3
+  Clear Color: [0.9098039, 0.80591625, 0.7492503, 1]
+Entities:
+  - Entity: 17988049775391052853
+    Tag:
+      Tag: Unnamed Cube
+    Transform:
+      Position: [0, 0, 0]
+      Size: [1, 1, 1]
+      Rotation: [0, 0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: UNKNOWN
+        Is Textured: false
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+  - Entity: 12463388730657601471
+    Tag:
+      Tag: Cubes
+    Transform:
+      Position: [0, 0, -0.7607881]
+      Size: [1.02, 1.02, 1.02]
+      Rotation: [0, -0, 0]
+    Children:
+      - 17467711860514378468
+      - 13787056328340183789
+      - 17855780013210697539
+  - Entity: 13787056328340183789
+    Tag:
+      Tag: Cube
+    Transform:
+      Position: [-0.5153756, 0.23313794, -0.51844436]
+      Size: [0.24999987, 0.24999991, 0.24999987]
+      Rotation: [0, -36, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 12463388730657601471
+  - Entity: 17467711860514378468
+    Tag:
+      Tag: Cube
+    Transform:
+      Position: [-0.020621229, 0.4913607, -0.43750983]
+      Size: [0.49999973, 0.49999982, 0.49999973]
+      Rotation: [0, -36, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 12463388730657601471
+    Children:
+      []
+  - Entity: 17855780013210697539
+    Tag:
+      Tag: Cube
+    Transform:
+      Position: [-0.47182792, 0.4913607, -0.93750954]
+      Size: [0.49999982, 0.49999982, 0.49999982]
+      Rotation: [0, -0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: proto.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 12463388730657601471
+  - Entity: 2713583607830520205
+    Tag:
+      Tag: Sun
+    Transform:
+      Position: [0, 1.9337641, 0]
+      Size: [0.4, 0.4, 0.4]
+      Rotation: [0, 0, 0]
+    DirLight:
+      Direction: [-0.2, -1, -0.3]
+      Ambient: 0.1
+      Color: [1, 1, 1]
+      Strength: 0.5
+  - Entity: 9777837746548127947
+    Tag:
+      Tag: Floor
+    Transform:
+      Position: [0, 0, 0]
+      Size: [15, 0.2, 15]
+      Rotation: [0, 0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [0.71308017, 0.71308017, 0.71308017]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 115.6
+        Texture: tiles.png
+        Is Textured: true
+        Texture Repeats: [15, 15]
+        Texture Offsets: [0, 0]
