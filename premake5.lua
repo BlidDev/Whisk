@@ -1,7 +1,5 @@
 local WSK_ROOT = _MAIN_SCRIPT_DIR
-local DOU_ROOT = WSK_ROOT .. "/vendor/dou_engine"
 
-local dou_vars = require(WSK_ROOT .. "/vendor/dou_engine/premake5")
 
 local SHARED_FILES = {
     "shared/src/**.cpp",
@@ -10,7 +8,6 @@ local SHARED_FILES = {
     "shared/include/**.hpp"
 }
 
-includeexternal("vendor/dou_engine")
 
 workspace "WhiskEditor"
     architecture "x86_64"
@@ -55,6 +52,12 @@ workspace "WhiskEditor"
     filter {}
 
 
+-- = ENGINE INCLUDE ===========================================
+DOU_STANDALONE = false
+local dou_vars = include(WSK_ROOT .. "/vendor/dou_engine/premake5")
+local DOU_ROOT = "vendor/dou_engine"
+-- ============================================================
+
 project "editor"
     kind "ConsoleApp"
     language "C++"
@@ -78,7 +81,7 @@ project "editor"
         "vendor/tinyfiledialogs/tinyfiledialogs.cpp"
     }
 
-    includedirs(dou_vars.get_dou_includes("vendor/dou_engine"))
+    includedirs(dou_vars.get_dou_includes(DOU_ROOT))
 
     includedirs {
         "editor/include",
@@ -92,10 +95,9 @@ project "editor"
     }
 
     defines {
-        "IMGUI_IMPL_OPENGL_LOADER_CUSTOM"
+        --"IMGUI_IMPL_OPENGL_LOADER_CUSTOM"
     }
 
-    link_dou_engine(DOU_ROOT)
 
     libdirs {
         DOU_ROOT .. "/bin/%{cfg.buildcfg}",
@@ -103,6 +105,8 @@ project "editor"
         DOU_ROOT .. "/vendor/bin/%{cfg.buildcfg}/YAML_CPP",
         DOU_ROOT .. "/vendor/bin/%{cfg.buildcfg}/GLFW"
     }
+
+    link_dou_engine(DOU_ROOT)
 
     pchheader "engine.h"
 
@@ -117,3 +121,6 @@ project "editor"
         }
 
     filter {}
+
+
+
