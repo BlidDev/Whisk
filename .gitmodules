@@ -1,3 +1,5 @@
 [submodule "vendor/dou_engine"]
 	path = vendor/dou_engine
-	url = https://github.com/bliddev/rayengine
+	url = https://github.com/bliddev/dou_engine
+	branch = premake
+	update = merge
