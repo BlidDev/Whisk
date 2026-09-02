@@ -26,22 +26,6 @@ workspace "WhiskEditor"
     filter "configurations:Release"
         optimize "Speed"
 
-    filter "system:windows"
-        defines { "SPDLOG_WCHAR_TO_UTF8_SUPPORT" }
-
-    filter "toolset:msc"
-        staticruntime "On"
-        buildoptions {
-            "/permissive-",
-            "/bigobj",
-            "/utf-8"
-        }
-
-    filter "toolset:gcc or toolset:clang"
-        buildoptions {
-            "-finput-charset=UTF-8",
-            "-fexec-charset=UTF-8"
-        }
 
     filter "toolset:gcc"
         buildoptions { "-fdiagnostics-color=always" }
@@ -78,7 +62,8 @@ project "editor"
         "vendor/imgui/backends/*.cpp",
         "vendor/imgui/misc/cpp/*.cpp",
         "vendor/ImGuizmo/*.cpp",
-        "vendor/tinyfiledialogs/tinyfiledialogs.cpp"
+        "vendor/tinyfiledialogs/tinyfiledialogs.cpp",
+        DOU_ROOT .. "/engine/src/epch.cpp"
     }
 
     includedirs(dou_vars.get_dou_includes(DOU_ROOT))
@@ -108,8 +93,10 @@ project "editor"
 
     link_dou_engine(DOU_ROOT)
 
-    pchheader "engine.h"
+    pchheader "epch.h"
+    pchsource (DOU_ROOT .. "/engine/src/epch.cpp")
 
+    dou_vars.utf8_filter()
     filter "system:linux"
         links {
             "GL",
