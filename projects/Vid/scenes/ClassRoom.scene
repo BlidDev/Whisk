@@ -204,10 +204,10 @@ Entities:
     Lua Actions:
       - Path: character.lua
         Fields:
-          SideCam: [u, 12639170370654235100]
-          this: [u, 800291361302022968]
-          StraightCam: [u, 8733798803940700876]
           Speed: [f, 15]
+          SideCam: [u, 12639170370654235100]
+          StraightCam: [u, 8733798803940700876]
+          this: [u, 800291361302022968]
     Children:
       - 8733798803940700876
       - 18003564158831256656
@@ -838,8 +838,8 @@ Entities:
     Lua Actions:
       - Path: sprite.lua
         Fields:
-          ToggledModes: [b, false]
           this: [u, 18003564158831256656]
+          ToggledModes: [b, false]
     Parent:
       Parent: 800291361302022968
   - Entity: 3248375973385381486

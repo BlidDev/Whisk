@@ -1,17 +1,10 @@
+#include "wpch.h"
 #include "components/modelcomp.h"
 #include "glm/fwd.hpp"
 #include "helper.h"
 #include "imgui_internal.h"
 
 #include <glm/gtc/type_ptr.hpp>
-
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
-#include <misc/cpp/imgui_stdlib.h>
-
-#include <tinyfiledialogs.h>
-#include <IconsMaterialDesign.h>
 
 extern ImGuiContext* GImGui;
 

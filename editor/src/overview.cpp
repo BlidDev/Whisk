@@ -1,8 +1,8 @@
+#include "wpch.h"
 #include "components/transform.h"
 #include "editors.h"
 #include "helper.h"
-#include "imgui.h"
-#include "misc/cpp/imgui_stdlib.h"
+
 #include <array>
 #include <functional>
 

@@ -63,7 +63,6 @@ project "editor"
         "vendor/imgui/misc/cpp/*.cpp",
         "vendor/ImGuizmo/*.cpp",
         "vendor/tinyfiledialogs/tinyfiledialogs.cpp",
-        DOU_ROOT .. "/engine/src/epch.cpp"
     }
 
     includedirs(dou_vars.get_dou_includes(DOU_ROOT))
@@ -93,8 +92,8 @@ project "editor"
 
     link_dou_engine(DOU_ROOT)
 
-    pchheader "epch.h"
-    pchsource (DOU_ROOT .. "/engine/src/epch.cpp")
+    pchheader "wpch.h"
+    pchsource "editor/src/wpch.cpp"
 
     dou_vars.utf8_filter()
     filter "system:linux"

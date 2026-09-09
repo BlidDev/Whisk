@@ -1,14 +1,9 @@
+#include "wpch.h"
 #include "greeter.h"
-#include <GLFW/glfw3.h>
-#include <IconsMaterialDesign.h>
 #include "helper.h"
 #include <format>
-#include <tinyfiledialogs.h>
 
 #include <filesystem>
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
 
 extern ImGuiContext* GImGui;
 

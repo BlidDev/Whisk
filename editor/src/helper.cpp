@@ -1,10 +1,7 @@
+#include "wpch.h"
 #include "helper.h"
 #include "glm/gtc/type_ptr.hpp"
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
 #include <misc/cpp/imgui_stdlib.h>
-#include <IconsMaterialDesign.h>
 
 void initialize_imgui(SceneManager* manager) {
     IMGUI_CHECKVERSION();
