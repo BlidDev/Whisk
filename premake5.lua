@@ -95,6 +95,12 @@ project "editor"
     pchheader "wpch.h"
     pchsource "editor/src/wpch.cpp"
 
+    filter "files:vendor/**.cpp"
+        enablepch "Off"
+    
+    filter "files:vendor/**.c"
+        enablepch "Off"
+
     dou_vars.utf8_filter()
     filter "system:linux"
         links {

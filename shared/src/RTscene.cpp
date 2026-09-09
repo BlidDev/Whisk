@@ -1,3 +1,4 @@
+#include "wpch.h"
 #include "RTscene.h"
 
 RTScene::RTScene() : Scene("RT") { 
