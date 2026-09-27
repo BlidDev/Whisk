@@ -1,6 +1,6 @@
 Project Name: Vid
 Root Path: projects/Vid
-Startup Scene: ClassRoom
+Startup Scene: Start
 Flip Textures On Load: true
 Paths:
   Scenes:
@@ -9,6 +9,7 @@ Paths:
     - shaders
   Textures:
     - textures
+    - textures/start
   Meshes:
     - meshes
   Scripts:

@@ -1,0 +1,545 @@
+Scene: Start
+Render Data:
+  Main Camera: 10799450850602709205
+  Ambient: [1, 1, 1]
+  Ambient Strength: 0.1
+  Clear Color: [0.29230767, 0.94120705, 1, 0]
+Entities:
+  - Entity: 13228926880788265152
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.69626427, 0.84999704, 0.7026825]
+      Size: [0.9999881, 1, 0.99998885]
+      Rotation: [-179.99995, 78.83103, 179.99998]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 6165144210435853407
+  - Entity: 2682203276016287426
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.6969353, 0.84999704, -0.046155244]
+      Size: [0.99999696, 1, 0.99999696]
+      Rotation: [5.5852575e-05, 65.09461, -2.840463e-06]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 6165144210435853407
+  - Entity: 14273671797301687052
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.27481204, 0.84999704, -0.5726438]
+      Size: [0.99999714, 1, 0.99999714]
+      Rotation: [6.556448e-05, 36.539547, -9.359875e-09]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 6165144210435853407
+  - Entity: 6165144210435853407
+    Tag:
+      Tag: Trees
+    Transform:
+      Position: [-0.27481204, 1.2505337, -0.5726438]
+      Size: [1.0000001, 1, 1.0000001]
+      Rotation: [0, -38.721603, 0]
+    Parent:
+      Parent: 15515361837418447760
+    Children:
+      - 14273671797301687052
+      - 2682203276016287426
+      - 13228926880788265152
+  - Entity: 11582544962246184613
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.36415213, 0.8499963, 2.0089278]
+      Size: [0.9999891, 1, 0.9999895]
+      Rotation: [-179.99994, 14.226576, 180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 15515361837418447760
+  - Entity: 12715677499913223401
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-1.0409209, 0.8499963, 1.6883812]
+      Size: [0.99999607, 1, 0.99999607]
+      Rotation: [-179.99994, 50.30095, -180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 15515361837418447760
+  - Entity: 16526395883431567948
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-1.3354971, 0.8499963, 1.0812591]
+      Size: [0.9999974, 1, 0.9999974]
+      Rotation: [-179.99994, 78.85606, -180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 15515361837418447760
+  - Entity: 15515361837418447760
+    Tag:
+      Tag: Trees
+    Transform:
+      Position: [-1.3354971, 1.250533, 1.0812591]
+      Size: [0.9999942, 1, 0.99999434]
+      Rotation: [5.102963e-07, 25.883131, 1.7515326e-06]
+    Children:
+      - 16526395883431567948
+      - 12715677499913223401
+      - 11582544962246184613
+      - 6165144210435853407
+  - Entity: 17055763032517318744
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [1.4875621, 0.8499994, 2.2539515]
+      Size: [0.9999886, 0.99999994, 0.9999886]
+      Rotation: [-179.99994, -0.050331898, -180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 2001713793219524614
+  - Entity: 5629656454895837891
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [0.7536321, 0.8499994, 2.4026554]
+      Size: [0.9999959, 1, 0.9999959]
+      Rotation: [-179.99994, 13.502925, 180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 1
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 2001713793219524614
+  - Entity: 4373273287840498635
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [0.15408564, 0.8499994, 2.0929506]
+      Size: [0.9999969, 1, 0.9999969]
+      Rotation: [-179.99994, 42.05799, -180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 3
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 2001713793219524614
+  - Entity: 2001713793219524614
+    Tag:
+      Tag: Trees
+    Transform:
+      Position: [0.15408564, 1.2505361, 2.0929506]
+      Size: [0.9999942, 1, 0.9999942]
+      Rotation: [2.7963363e-06, 62.68123, 3.4336122e-06]
+    Children:
+      - 4373273287840498635
+      - 5629656454895837891
+      - 17055763032517318744
+      - 11816717562037004527
+  - Entity: 17604990796265573236
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [0.42726767, 0.8500028, 1.4139643]
+      Size: [0.9999882, 1, 0.99998915]
+      Rotation: [-179.99994, 42.033028, 180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 5
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 11816717562037004527
+  - Entity: 17250556546505440940
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [-0.009900924, 0.85000014, 0.8076749]
+      Size: [0.9999963, 1, 0.9999963]
+      Rotation: [-179.99994, 78.10738, -180]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 6
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 11816717562037004527
+  - Entity: 9043545699770402274
+    Tag:
+      Tag: Tree
+    Transform:
+      Position: [0.012750071, 0.85000014, 0.1332389]
+      Size: [0.9999965, 1, 0.9999965]
+      Rotation: [6.554492e-05, 73.337616, -2.6249852e-08]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 4
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: tree.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 11816717562037004527
+  - Entity: 11816717562037004527
+    Tag:
+      Tag: Trees
+    Transform:
+      Position: [0.012750071, 1.2505368, 0.1332389]
+      Size: [0.9999998, 1, 0.9999998]
+      Rotation: [0, -1.9235609, 0]
+    Parent:
+      Parent: 2001713793219524614
+    Children:
+      - 9043545699770402274
+      - 17250556546505440940
+      - 17604990796265573236
+  - Entity: 17051782424614839973
+    Tag:
+      Tag: Light
+    Transform:
+      Position: [0, 6.244542, 0]
+      Size: [1, 1, 1]
+      Rotation: [0, -0, 0]
+    DirLight:
+      Direction: [-0.7, -1, 0.4]
+      Ambient: 0.1
+      Color: [1, 0.92969465, 0.71076924]
+      Strength: 0.9
+  - Entity: 8689046152708571638
+    Tag:
+      Tag: Ground
+    Transform:
+      Position: [0, -0.18610978, 0]
+      Size: [30, 1, 30]
+      Rotation: [0, 0, 0]
+    Model:
+      Mesh Name: cube
+      Layer: 0
+      Immune: false
+      Material:
+        Shader: lighting.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [0.28615385, 1, 0.28615385]
+        Specular: [1, 1, 1]
+        Shininess: 0
+        Texture: wall.png
+        Is Textured: true
+        Texture Repeats: [15, 15]
+        Texture Offsets: [0, 0]
+    PhysicsBody:
+      Gravity: 0
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+  - Entity: 4310912060294112282
+    Tag:
+      Tag: Sun
+    Transform:
+      Position: [0.70196867, 1.7746888, 2.3273194]
+      Size: [0.7316984, 0.7317001, 0.73169816]
+      Rotation: [2.7320819e-05, -16.369968, -1.1880732e-11]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 3
+      Immune: false
+      Material:
+        Shader: character.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: sun.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+  - Entity: 10799450850602709205
+    Tag:
+      Tag: Viewer
+    Transform:
+      Position: [1.7898438, 0.4903484, 0.16497485]
+      Size: [0.16000012, 0.16000003, 0.15999995]
+      Rotation: [0, -0, 0]
+    Camera:
+      Pitch: 3.199997
+      Yaw: 149.5
+      Up: [0, 1, 0]
+      FovY: 67.8
+      Projection: Perspective
+      Max Distance: 30
+      Framebuffer:
+        Width: 854
+        Height: 480
+      Present Shader: DefaultCameraPresent.glsl
+  - Entity: 11204650046990185862
+    Tag:
+      Tag: Helper Light
+    Transform:
+      Position: [0.75526863, 1.6819496, 0.69199437]
+      Size: [1, 1, 1]
+      Rotation: [0, -0, 0]
+    PntLight:
+      Color: [1, 1, 1]
+      Constant: 1
+      Linear: 2
+      Quadratic: 1.83
+  - Entity: 15988299525367322548
+    Tag:
+      Tag: Flowers
+    Transform:
+      Position: [1.4233668, 0.5742055, -0.27153546]
+      Size: [0.1, 0.1, 0.1]
+      Rotation: [0, -0, 0]
+    Children:
+      - 3397552155365027003
+      - 12892853569409010370
+      - 8269090386627011224
+  - Entity: 3397552155365027003
+    Tag:
+      Tag: Flower
+    Transform:
+      Position: [0.64651, 0.574206, 0.31994396]
+      Size: [0.6, 0.6, 0.6]
+      Rotation: [0, -63.70204, 0]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 7
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: flower.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 15988299525367322548
+  - Entity: 12892853569409010370
+    Tag:
+      Tag: Flower
+    Transform:
+      Position: [0.73035324, 0.5742098, 0.39175]
+      Size: [0.6, 0.6, 0.6]
+      Rotation: [0, -63.70204, 0]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 7
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: flower.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 15988299525367322548
+  - Entity: 8269090386627011224
+    Tag:
+      Tag: Flower
+    Transform:
+      Position: [0.65659076, 0.57421356, 0.2572012]
+      Size: [0.6, 0.6, 0.6]
+      Rotation: [0, -63.70204, 0]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 7
+      Immune: false
+      Material:
+        Shader: basic.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: flower.png
+        Is Textured: true
+        Texture Repeats: [1, 1]
+        Texture Offsets: [0, 0]
+    Parent:
+      Parent: 15988299525367322548
+  - Entity: 13861761885030427926
+    Tag:
+      Tag: Character
+    Transform:
+      Position: [1.534325, 0.68439645, 0.92031974]
+      Size: [0.5, 0.5, 0.5]
+      Rotation: [0, -57.25608, 0]
+    Model:
+      Mesh Name: quad_tex
+      Layer: 10
+      Immune: false
+      Material:
+        Shader: character.glsl
+        Ambient: [1, 1, 1]
+        Diffuse: [1, 1, 1]
+        Specular: [1, 1, 1]
+        Shininess: 32
+        Texture: normal.png
+        Is Textured: true
+        Texture Repeats: [-1, 1]
+        Texture Offsets: [0, 0]
+    PhysicsBody:
+      Gravity: 1
+      Mass: 10
+      Slipperiness: 0.01
+      Velocity: [0, 0, 0]
+      Is Solid: true
+      Is Static: true
+      Move Delta: [0, 0, 0]
+    Lua Actions:
+      - Path: character.lua
+        Fields:
+          SideCam: [u, 10799450850602709205]
+          Speed: [f, 2.5]
+          StraightCam: [u, 0]
+          this: [u, 13861761885030427926]
+      - Path: sprite.lua
+        Fields:
+          ToggledModes: [b, false]
+          this: [u, 13861761885030427926]
