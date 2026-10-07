@@ -34,13 +34,13 @@ Layers:
     Depth Test: true
     Wireframe Mode: false
   Layer 6:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 7:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 8:
-    Depth Test: false
+    Depth Test: true
     Wireframe Mode: false
   Layer 9:
     Depth Test: false

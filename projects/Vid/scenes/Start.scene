@@ -172,9 +172,9 @@ Entities:
     Tag:
       Tag: Tree
     Transform:
-      Position: [1.4875621, 0.8499994, 2.2539515]
-      Size: [0.9999886, 0.99999994, 0.9999886]
-      Rotation: [-179.99994, -0.050331898, -180]
+      Position: [1.4646255, 0.8499994, 2.2539515]
+      Size: [0.99997073, 0.99999994, 0.99997073]
+      Rotation: [-179.99994, -0.050332796, -180]
     Model:
       Mesh Name: quad_tex
       Layer: 1
@@ -195,12 +195,12 @@ Entities:
     Tag:
       Tag: Tree
     Transform:
-      Position: [0.7536321, 0.8499994, 2.4026554]
-      Size: [0.9999959, 1, 0.9999959]
-      Rotation: [-179.99994, 13.502925, 180]
+      Position: [0.85294634, 0.8499993, 2.1668715]
+      Size: [0.99999666, 1, 0.99999666]
+      Rotation: [-179.99994, 13.502894, -180]
     Model:
       Mesh Name: quad_tex
-      Layer: 1
+      Layer: 4
       Immune: false
       Material:
         Shader: lighting.glsl
@@ -427,7 +427,7 @@ Entities:
     Tag:
       Tag: Flowers
     Transform:
-      Position: [1.4233668, 0.5742055, -0.27153546]
+      Position: [1.4233668, 0.5742055, -0.2715355]
       Size: [0.1, 0.1, 0.1]
       Rotation: [0, -0, 0]
     Children:
@@ -438,12 +438,12 @@ Entities:
     Tag:
       Tag: Flower
     Transform:
-      Position: [0.64651, 0.574206, 0.31994396]
+      Position: [0.64651, 0.574206, 0.31994393]
       Size: [0.6, 0.6, 0.6]
       Rotation: [0, -63.70204, 0]
     Model:
       Mesh Name: quad_tex
-      Layer: 7
+      Layer: 10
       Immune: false
       Material:
         Shader: basic.glsl
@@ -461,12 +461,12 @@ Entities:
     Tag:
       Tag: Flower
     Transform:
-      Position: [0.73035324, 0.5742098, 0.39175]
+      Position: [0.73035324, 0.5742098, 0.39174998]
       Size: [0.6, 0.6, 0.6]
       Rotation: [0, -63.70204, 0]
     Model:
       Mesh Name: quad_tex
-      Layer: 7
+      Layer: 10
       Immune: false
       Material:
         Shader: basic.glsl
@@ -484,12 +484,12 @@ Entities:
     Tag:
       Tag: Flower
     Transform:
-      Position: [0.65659076, 0.57421356, 0.2572012]
+      Position: [0.65659076, 0.57421356, 0.25720116]
       Size: [0.6, 0.6, 0.6]
       Rotation: [0, -63.70204, 0]
     Model:
       Mesh Name: quad_tex
-      Layer: 7
+      Layer: 10
       Immune: false
       Material:
         Shader: basic.glsl
@@ -507,9 +507,9 @@ Entities:
     Tag:
       Tag: Character
     Transform:
-      Position: [1.534325, 0.68439645, 0.92031974]
-      Size: [0.5, 0.5, 0.5]
-      Rotation: [0, -57.25608, 0]
+      Position: [1.04, 0.68439645, 0.712]
+      Size: [0.49999994, 0.5, 0.49999994]
+      Rotation: [0, -58.4, 0]
     Model:
       Mesh Name: quad_tex
       Layer: 10
@@ -520,9 +520,9 @@ Entities:
         Diffuse: [1, 1, 1]
         Specular: [1, 1, 1]
         Shininess: 32
-        Texture: normal.png
+        Texture: sheet.png
         Is Textured: true
-        Texture Repeats: [-1, 1]
+        Texture Repeats: [-0.25, 0.25]
         Texture Offsets: [0, 0]
     PhysicsBody:
       Gravity: 1
@@ -533,13 +533,11 @@ Entities:
       Is Static: true
       Move Delta: [0, 0, 0]
     Lua Actions:
-      - Path: character.lua
+      - Path: lilguy.lua
         Fields:
-          SideCam: [u, 10799450850602709205]
-          Speed: [f, 2.5]
-          StraightCam: [u, 0]
+          Speed: [f, 2]
           this: [u, 13861761885030427926]
-      - Path: sprite.lua
+      - Path: lilscript.lua
         Fields:
-          ToggledModes: [b, false]
           this: [u, 13861761885030427926]
+          ToggledModes: [b, true]
